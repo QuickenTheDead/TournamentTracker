@@ -17,7 +17,8 @@ namespace TournamentTracker
 	/// </summary>
 	public partial class PlayerInfoForm : Form
 	{
-		public Player player = new Player("noInfo","noInfo","noInfo");
+		public Player player = new Player();
+		public String Action = "Cancel";
 		public PlayerInfoForm()
 		{
 			//
@@ -25,6 +26,21 @@ namespace TournamentTracker
 			//
 			InitializeComponent();
 			
+			
+			//
+			// TODO: Add constructor code after the InitializeComponent() call.
+			//
+		}
+		public PlayerInfoForm(Player player1)
+		{
+			//
+			// The InitializeComponent() call is required for Windows Forms designer support.
+			//
+			InitializeComponent();
+			player = player1;
+			firstNameTextBox.Text = player.firstName;
+			lastNameTextBox.Text = player.lastName;
+			factionComboBox.Text = player.faction;
 			//
 			// TODO: Add constructor code after the InitializeComponent() call.
 			//
@@ -48,8 +64,19 @@ namespace TournamentTracker
 				player.firstName = firstNameTextBox.Text;
 				player.lastName = lastNameTextBox.Text;
 				player.faction = factionComboBox.Text;
+				Action = "Update";
 				this.Close();
 			}
+		}
+		void DeleteButtonClick(object sender, EventArgs e)
+		{
+			Action = "Delete";
+			this.Close();
+		}
+		void CancelButtonClick(object sender, EventArgs e)
+		{
+			Action = "Cancel";
+			this.Close();
 		}
 	}
 }

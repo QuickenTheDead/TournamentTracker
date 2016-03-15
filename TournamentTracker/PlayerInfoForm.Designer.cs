@@ -22,6 +22,7 @@ namespace TournamentTracker
 		private System.Windows.Forms.Button addButton;
 		private System.Windows.Forms.Button cancelButton;
 		private System.Windows.Forms.ComboBox factionComboBox;
+		private System.Windows.Forms.Button deleteButton;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -52,6 +53,7 @@ namespace TournamentTracker
 			this.addButton = new System.Windows.Forms.Button();
 			this.cancelButton = new System.Windows.Forms.Button();
 			this.factionComboBox = new System.Windows.Forms.ComboBox();
+			this.deleteButton = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// firstNameLabel
@@ -98,18 +100,19 @@ namespace TournamentTracker
 			this.addButton.Name = "addButton";
 			this.addButton.Size = new System.Drawing.Size(100, 23);
 			this.addButton.TabIndex = 6;
-			this.addButton.Text = "Add Player";
+			this.addButton.Text = "Update Player";
 			this.addButton.UseVisualStyleBackColor = true;
 			this.addButton.Click += new System.EventHandler(this.AddButtonClick);
 			// 
 			// cancelButton
 			// 
-			this.cancelButton.Location = new System.Drawing.Point(120, 94);
+			this.cancelButton.Location = new System.Drawing.Point(225, 94);
 			this.cancelButton.Name = "cancelButton";
 			this.cancelButton.Size = new System.Drawing.Size(100, 23);
 			this.cancelButton.TabIndex = 7;
 			this.cancelButton.Text = "Cancel";
 			this.cancelButton.UseVisualStyleBackColor = true;
+			this.cancelButton.Click += new System.EventHandler(this.CancelButtonClick);
 			// 
 			// factionComboBox
 			// 
@@ -133,11 +136,22 @@ namespace TournamentTracker
 			this.factionComboBox.Size = new System.Drawing.Size(137, 21);
 			this.factionComboBox.TabIndex = 8;
 			// 
+			// deleteButton
+			// 
+			this.deleteButton.Location = new System.Drawing.Point(119, 95);
+			this.deleteButton.Name = "deleteButton";
+			this.deleteButton.Size = new System.Drawing.Size(100, 23);
+			this.deleteButton.TabIndex = 9;
+			this.deleteButton.Text = "Delete";
+			this.deleteButton.UseVisualStyleBackColor = true;
+			this.deleteButton.Click += new System.EventHandler(this.DeleteButtonClick);
+			// 
 			// PlayerInfoForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(301, 123);
+			this.ClientSize = new System.Drawing.Size(336, 123);
+			this.Controls.Add(this.deleteButton);
 			this.Controls.Add(this.factionComboBox);
 			this.Controls.Add(this.cancelButton);
 			this.Controls.Add(this.addButton);
@@ -150,6 +164,7 @@ namespace TournamentTracker
 			this.Text = "PlayerInfoForm";
 			this.ResumeLayout(false);
 			this.PerformLayout();
+
 		}
 	}
 }
