@@ -19,6 +19,7 @@ namespace TournamentTracker
 	public partial class MainForm : Form
 	{
 		public Player [] playerList = new Player[128];
+		//public List<Player> lstPlayer = new List<Player>;
 		public int playerCount = -1;
 		public PlayerInfoForm playerInfoForm = new PlayerInfoForm();
 		int index;
@@ -71,7 +72,7 @@ namespace TournamentTracker
 				playerList[playerCount].lastName = lastNameTextBox.Text;
 				playerList[playerCount].faction = factionComboBox.Text;
 				testLabel.Text = playerList[playerCount].firstName + " " + playerList[playerCount].lastName + " " + playerList[playerCount].faction;
-				playersListbox.Items.Add(playerList[playerCount].firstName + " (" + playerList[playerCount].faction + ")");
+				playersListbox.Items.Add(playerList[playerCount].firstName + " " + playerList[playerCount].lastName + " (" + playerList[playerCount].faction + ")");
 				firstNameTextBox.Clear();
 				lastNameTextBox.Clear();
 				factionComboBox.SelectedIndex = 0;
@@ -100,7 +101,7 @@ namespace TournamentTracker
 				playersListbox.Items.Clear();
 				for(int x=0; x<playerCount+1; x++)
 				{
-				  	playersListbox.Items.Add(playerList[x].firstName + " (" + playerList[x].faction + ")");
+				  	playersListbox.Items.Add(playerList[x].firstName + " " + playerList[x].lastName + " (" + playerList[x].faction + ")");
 				}
 				playerCountLabel.Text = "Player Count : " + (playerCount+1);
 				
@@ -113,9 +114,10 @@ namespace TournamentTracker
 				playersListbox.Items.Clear();
 				for(int x=0; x<playerCount+1; x++)
 				{
-				  	playersListbox.Items.Add(playerList[x].firstName + " (" + playerList[x].faction + ")");
+				  	playersListbox.Items.Add(playerList[x].firstName + " " + playerList[x].lastName + " (" + playerList[x].faction + ")");
 
 				}
+				
 				
 			}
 			playerInfoForm = new PlayerInfoForm();
@@ -138,6 +140,21 @@ namespace TournamentTracker
 		void LastNamelabelClick(object sender, EventArgs e)
 		{
 	
+		}
+		void ClearPlayersButtonClick(object sender, EventArgs e)
+		{
+			for(int x=0; x<playerCount+1; x++)
+			{
+				playerList[x] = null;
+			}
+			playerCount = -1;
+			playerCountLabel.Text = "Player Count : " + (playerCount+1);
+			playersListbox.Items.Clear();
+		}
+		void StartButtonClick(object sender, EventArgs e)
+		{
+			PairngsForm pairform = new PairngsForm();
+			pairform.Show();
 		}
 
 	}

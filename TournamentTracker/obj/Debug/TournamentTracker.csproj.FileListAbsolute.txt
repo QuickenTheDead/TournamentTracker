@@ -16,3 +16,4 @@ C:\Users\cittah\Documents\SharpDevelop Projects\TournamentTrackerGit\TournamentT
 C:\Users\cittah\Documents\SharpDevelop Projects\TournamentTrackerGit\TournamentTracker\bin\Debug\TournamentTracker.exe
 C:\Users\cittah\Documents\SharpDevelop Projects\TournamentTrackerGit\TournamentTracker\bin\Debug\TournamentTracker.pdb
 C:\Users\cittah\Documents\SharpDevelop Projects\TournamentTrackerGit\TournamentTracker\obj\Debug\TournamentTracker.pdb
+C:\Users\cittah\Documents\SharpDevelop Projects\TournamentTrackerGit\TournamentTracker\obj\Debug\TournamentTracker.PairngsForm.resources

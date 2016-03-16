@@ -50,6 +50,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PairngsForm.cs" />
+    <Compile Include="PairngsForm.Designer.cs">
+      <DependentUpon>PairngsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Player.cs" />
     <Compile Include="MainForm.cs" />
     <Compile Include="MainForm.Designer.cs">
@@ -68,6 +72,9 @@
   <ItemGroup>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PairngsForm.resx">
+      <DependentUpon>PairngsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlayerInfoForm.resx">
       <DependentUpon>PlayerInfoForm.cs</DependentUpon>

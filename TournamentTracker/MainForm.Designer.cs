@@ -27,6 +27,10 @@ namespace TournamentTracker
 		private System.Windows.Forms.Button clearButton;
 		private System.Windows.Forms.Button startButton;
 		private System.Windows.Forms.Label playerCountLabel;
+		private System.Windows.Forms.Label playerListLabel;
+		private System.Windows.Forms.Label tablesLabel;
+		private System.Windows.Forms.Label roundslabel;
+		private System.Windows.Forms.Button clearPlayersButton;
 
 		
 		
@@ -61,6 +65,10 @@ namespace TournamentTracker
 			this.clearButton = new System.Windows.Forms.Button();
 			this.startButton = new System.Windows.Forms.Button();
 			this.playerCountLabel = new System.Windows.Forms.Label();
+			this.playerListLabel = new System.Windows.Forms.Label();
+			this.tablesLabel = new System.Windows.Forms.Label();
+			this.roundslabel = new System.Windows.Forms.Label();
+			this.clearPlayersButton = new System.Windows.Forms.Button();
 			this.addPlayerGroupBox.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -77,7 +85,7 @@ namespace TournamentTracker
 			// playersListbox
 			// 
 			this.playersListbox.FormattingEnabled = true;
-			this.playersListbox.Location = new System.Drawing.Point(12, 12);
+			this.playersListbox.Location = new System.Drawing.Point(12, 38);
 			this.playersListbox.Name = "playersListbox";
 			this.playersListbox.Size = new System.Drawing.Size(254, 238);
 			this.playersListbox.TabIndex = 1;
@@ -85,11 +93,12 @@ namespace TournamentTracker
 			// 
 			// testLabel
 			// 
-			this.testLabel.Location = new System.Drawing.Point(12, 275);
+			this.testLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.testLabel.Location = new System.Drawing.Point(302, 246);
 			this.testLabel.Name = "testLabel";
-			this.testLabel.Size = new System.Drawing.Size(273, 23);
+			this.testLabel.Size = new System.Drawing.Size(155, 23);
 			this.testLabel.TabIndex = 2;
-			this.testLabel.Text = "Test";
+			this.testLabel.Text = "Test Label";
 			// 
 			// addPlayerGroupBox
 			// 
@@ -101,7 +110,7 @@ namespace TournamentTracker
 			this.addPlayerGroupBox.Controls.Add(this.FirstNamelabel);
 			this.addPlayerGroupBox.Controls.Add(this.clearButton);
 			this.addPlayerGroupBox.Controls.Add(this.addPlayerButton);
-			this.addPlayerGroupBox.Location = new System.Drawing.Point(336, 12);
+			this.addPlayerGroupBox.Location = new System.Drawing.Point(306, 12);
 			this.addPlayerGroupBox.Name = "addPlayerGroupBox";
 			this.addPlayerGroupBox.Size = new System.Drawing.Size(200, 143);
 			this.addPlayerGroupBox.TabIndex = 3;
@@ -110,6 +119,7 @@ namespace TournamentTracker
 			// 
 			// factionComboBox
 			// 
+			this.factionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.factionComboBox.FormattingEnabled = true;
 			this.factionComboBox.Items.AddRange(new object[] {
 			"Cygnar",
@@ -171,6 +181,7 @@ namespace TournamentTracker
 			// 
 			// clearButton
 			// 
+			this.clearButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.clearButton.Location = new System.Drawing.Point(107, 111);
 			this.clearButton.Name = "clearButton";
 			this.clearButton.Size = new System.Drawing.Size(87, 23);
@@ -181,12 +192,13 @@ namespace TournamentTracker
 			// 
 			// startButton
 			// 
-			this.startButton.Location = new System.Drawing.Point(424, 174);
+			this.startButton.Location = new System.Drawing.Point(306, 272);
 			this.startButton.Name = "startButton";
-			this.startButton.Size = new System.Drawing.Size(112, 23);
+			this.startButton.Size = new System.Drawing.Size(102, 23);
 			this.startButton.TabIndex = 4;
 			this.startButton.Text = "Start Tournament";
 			this.startButton.UseVisualStyleBackColor = true;
+			this.startButton.Click += new System.EventHandler(this.StartButtonClick);
 			// 
 			// playerCountLabel
 			// 
@@ -197,11 +209,54 @@ namespace TournamentTracker
 			this.playerCountLabel.TabIndex = 5;
 			this.playerCountLabel.Text = "Player Count : 0";
 			// 
+			// playerListLabel
+			// 
+			this.playerListLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.playerListLabel.Location = new System.Drawing.Point(13, 12);
+			this.playerListLabel.Name = "playerListLabel";
+			this.playerListLabel.Size = new System.Drawing.Size(100, 23);
+			this.playerListLabel.TabIndex = 6;
+			this.playerListLabel.Text = "Player List";
+			// 
+			// tablesLabel
+			// 
+			this.tablesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tablesLabel.Location = new System.Drawing.Point(302, 200);
+			this.tablesLabel.Name = "tablesLabel";
+			this.tablesLabel.Size = new System.Drawing.Size(116, 23);
+			this.tablesLabel.TabIndex = 7;
+			this.tablesLabel.Text = "Tables : 0";
+			// 
+			// roundslabel
+			// 
+			this.roundslabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.roundslabel.Location = new System.Drawing.Point(302, 223);
+			this.roundslabel.Name = "roundslabel";
+			this.roundslabel.Size = new System.Drawing.Size(116, 23);
+			this.roundslabel.TabIndex = 8;
+			this.roundslabel.Text = "Max Rounds : 0";
+			// 
+			// clearPlayersButton
+			// 
+			this.clearPlayersButton.Location = new System.Drawing.Point(414, 272);
+			this.clearPlayersButton.Name = "clearPlayersButton";
+			this.clearPlayersButton.Size = new System.Drawing.Size(98, 23);
+			this.clearPlayersButton.TabIndex = 9;
+			this.clearPlayersButton.Text = "Clear Players";
+			this.clearPlayersButton.UseVisualStyleBackColor = true;
+			this.clearPlayersButton.Click += new System.EventHandler(this.ClearPlayersButtonClick);
+			// 
 			// MainForm
 			// 
+			this.AcceptButton = this.addPlayerButton;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(548, 307);
+			this.CancelButton = this.clearButton;
+			this.ClientSize = new System.Drawing.Size(522, 307);
+			this.Controls.Add(this.clearPlayersButton);
+			this.Controls.Add(this.roundslabel);
+			this.Controls.Add(this.tablesLabel);
+			this.Controls.Add(this.playerListLabel);
 			this.Controls.Add(this.playerCountLabel);
 			this.Controls.Add(this.startButton);
 			this.Controls.Add(this.addPlayerGroupBox);
