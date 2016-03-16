@@ -128,7 +128,7 @@ namespace TournamentTracker
 			"Cryx",
 			"Retribution of Scyra",
 			"Convergence of Cryss",
-			"Mercinaries",
+			"Mercenaries",
 			"Trollbloods",
 			"Circle Orboros",
 			"Skorne",

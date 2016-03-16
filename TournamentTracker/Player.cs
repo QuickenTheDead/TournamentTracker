@@ -15,40 +15,65 @@ namespace TournamentTracker
 	/// </summary>
 	public class Player
 	{
-		public string firstName;
-		public string lastName;
-		public string faction;
+		private string myFirstName;
+		private string myLastName;
+		private string myFaction;
+		private string myDisplayName;
 		public Player()
 		{
 			
 		}
 		public Player(string firstNm, string lastNm, string fact)
 		{
-			firstName = firstNm;
-			lastName = lastNm;
-			faction = fact;
-			
+			this.myFirstName = firstNm;
+			this.myLastName = lastNm;
+			this.myFaction = fact;
+			this.myDisplayName = firstNm + " " + lastNm + " " + " ("+fact+")";	
 		}
-		public void SetFirstName(string newFirstName)
-   		{
-        	firstName = newFirstName;
-   		}
-		public void SetLastName(string newLastName)
-   		{
-        	lastName = newLastName;
-   		}
-		public void SetFaction(string newFactionName)
-   		{
-        	faction = newFactionName;
-   		}
-		public String getFirstName() {
-        return firstName;
-    	}
-		public String getLastName() {
-        return lastName;
-    	}
-		public String getFaction() {
-        return faction;
-    	}
+		public string firstName
+        {
+            get
+            {
+                return myFirstName;
+            }
+            set
+            {
+                myFirstName = value;
+                myDisplayName = myFirstName + " " + myLastName + " " + " ("+myFaction+")";
+            }
+        }
+		
+		public string lastName
+        {
+            get
+            {
+                return myLastName;
+            }
+            set
+            {
+                myLastName = value;
+                myDisplayName = myFirstName + " " + myLastName + " " + " ("+myFaction+")";
+            }
+        }
+		public string faction
+        {
+            get
+            {
+                return myFaction;
+            }
+            set
+            {
+                myFaction = value;
+                myDisplayName = myFirstName + " " + myLastName + " " + " ("+myFaction+")";
+            }
+        }
+		public string displayName
+        {
+            get
+            {
+                return myDisplayName;
+            }
+        }
+    	
 	}
 }
