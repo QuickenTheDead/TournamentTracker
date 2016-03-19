@@ -19,6 +19,7 @@ namespace TournamentTracker
 		private string myLastName;
 		private string myFaction;
 		private string myDisplayName;
+        private bool dropped;
         private int wins;
         private int loses;
         private int controlPoints;
@@ -128,6 +129,19 @@ namespace TournamentTracker
             set
             {
                 loses = value;
+            }
+        }
+
+        public bool Dropped
+        {
+            get
+            {
+                return dropped;
+            }
+
+            set
+            {
+                dropped = value;
             }
         }
     }

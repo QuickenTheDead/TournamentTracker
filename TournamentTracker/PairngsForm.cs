@@ -10,6 +10,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Data;
 
 namespace TournamentTracker
 {
@@ -21,6 +22,7 @@ namespace TournamentTracker
         Tournament tourny;
         int index;
         ResultsRecorderForm resultsForm;
+        List<string> columns = new List<string>();
         public PairngsForm()
 		{
 			//
@@ -39,39 +41,98 @@ namespace TournamentTracker
             //
             InitializeComponent();
             tourny = new Tournament(players);
+            columns.Add("Table");
+            columns.Add("Player1");
+            columns.Add("Player2");
+            columns.Add("Complete");
+            refreshDataGridView();
             //
             // TODO: Add constructor code after the InitializeComponent() call.
             //
         }
         void PairngsFormLoad(object sender, EventArgs e)
 		{
-            foreach (Pairing pair in tourny.RoundList[0].PairingList)
-            {
-                testListBox.Items.Add(pair.Player1.displayName + " " + pair.Player2.displayName + " " + pair.Table);
-            }
+            
         }
-        void pairListbox_MouseDoubleClick(object sender, MouseEventArgs e)
+        void resultsForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            index = this.testListBox.IndexFromPoint(e.Location);
-            if (index != System.Windows.Forms.ListBox.NoMatches)
+            if (resultsForm.actionType != "Cancel")
             {
+                if (resultsForm.thisPair.WinningPlayer == 1)
+                {
+                    MessageBox.Show(tourny.RoundList[0].PairingList[index].Player1.firstName + " " + tourny.RoundList[0].PairingList[index].Player1.lastName + " WINS!", "Winning Message");
+                }
+                else
+                {
+                    MessageBox.Show(tourny.RoundList[0].PairingList[index].Player2.firstName + " " + tourny.RoundList[0].PairingList[index].Player2.lastName + " WINS!", "Winning Message");
+
+                }
+                refreshDataGridView();
+            }
+
+        }
+        private void pairDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //MessageBox.Show(e.ColumnIndex.ToString() + " " + e.RowIndex.ToString());
+            if (e.ColumnIndex == 3)
+            {
+                index = e.RowIndex;
                 resultsForm = new ResultsRecorderForm(tourny.RoundList[0].PairingList[index]);
                 resultsForm.FormClosed += new FormClosedEventHandler(resultsForm_FormClosed);
                 resultsForm.Show();
             }
         }
-        void resultsForm_FormClosed(object sender, FormClosedEventArgs e)
+        public DataTable GetResultsTable()
         {
-            if(resultsForm.thisPair.WinningPlayer == 1)
+            // Create the output table.
+            DataTable d = new DataTable();
+            // Loop through all process names.
+            foreach (String col in columns)
             {
-                MessageBox.Show(tourny.RoundList[0].PairingList[index].Player1.firstName + " " + tourny.RoundList[0].PairingList[index].Player1.lastName + " WINS!","Winning Message");
+                // The current process name.
+                string name = col;
+
+                // Add the program name to our columns.
+                d.Columns.Add(name);
             }
-            else
+                // Put every column's numbers in this List.
+                foreach (Pairing pair in tourny.RoundList[0].PairingList)
+                {
+                    DataRow row = d.NewRow();
+                    row["Table"] = pair.Table;
+                    row["Player1"] = pair.Player1.displayName;
+                    row["Player2"] = pair.Player2.displayName;
+                    row["Complete"] = pair.Finished;
+                    d.Rows.Add(row);
+                }
+            
+            return d;
+        }
+        private void refreshDataGridView()
+        {
+            //<toDo> Initial load does not show colours
+            pairingDataGridView.DataSource = null;
+            pairingDataGridView.DataSource = GetResultsTable();
+            pairingDataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            int index = 0;
+            foreach (DataGridViewRow row in pairingDataGridView.Rows)
             {
-                MessageBox.Show(tourny.RoundList[0].PairingList[index].Player2.firstName + " " + tourny.RoundList[0].PairingList[index].Player2.lastName + " WINS!", "Winning Message");
-
+                DataGridViewCellStyle style = new DataGridViewCellStyle();
+                if(tourny.RoundList[0].PairingList[index].Finished == false)
+                {
+                    style.BackColor = Color.LightSalmon;
+                    style.ForeColor = Color.Black;
+                }
+                else
+                {
+                    style.BackColor = Color.LightGreen;
+                    style.ForeColor = Color.Black;
+                }
+                
+                row.Cells[3].Style = style;
+                index++;
             }
-        }
 
         }
+    }
 }

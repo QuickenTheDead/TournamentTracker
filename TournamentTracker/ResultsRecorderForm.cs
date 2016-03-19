@@ -24,10 +24,12 @@ namespace TournamentTracker
             InitializeComponent();
             PlayerOneLabel.Text = pair.Player1.displayName;
             playerTwoLabel.Text = pair.Player2.displayName;
+            oneWinnerRadioButton.Checked = true;
         }
 
         private void acceptButton_Click(object sender, EventArgs e)
         {
+            actionType = "Accept";
             if (oneWinnerRadioButton.Checked)
             {
                 thisPair.WinningPlayer = 1;
@@ -40,6 +42,7 @@ namespace TournamentTracker
             thisPair.OnePlayerAP = Decimal.ToInt32(oneArmynumericUpDown.Value);
             thisPair.TwoPlayerCP = Decimal.ToInt32(twoCPnumericUpDown.Value);
             thisPair.TwoPlayerAP = Decimal.ToInt32(twoArmynumericUpDown.Value);
+            thisPair.Finished = true;
             this.Close();
 
         }

@@ -15,6 +15,7 @@ namespace TournamentTracker
         private int twoPlayerCP;
         private int onePlayerAP;
         private int twoPlayerAP;
+        private bool finished;
         public Pairing()
         {
 
@@ -126,6 +127,19 @@ namespace TournamentTracker
             set
             {
                 twoPlayerAP = value;
+            }
+        }
+
+        public bool Finished
+        {
+            get
+            {
+                return finished;
+            }
+
+            set
+            {
+                finished = value;
             }
         }
 

@@ -39,9 +39,9 @@ namespace TournamentTracker
 		void playerListbox_MouseDoubleClick(object sender, MouseEventArgs e)
     	{
           index = this.playersListbox.IndexFromPoint(e.Location);
-         if (index != System.Windows.Forms.ListBox.NoMatches)
+          if (index != System.Windows.Forms.ListBox.NoMatches)
             {
-         	playerInfoForm = new PlayerInfoForm(lstPlayer[index]);
+         	  playerInfoForm = new PlayerInfoForm(lstPlayer[index]);
               playerInfoForm.FormClosed += new FormClosedEventHandler(playerInfoForm_FormClosed);
 			  playerInfoForm.Show();
             }
