@@ -46,6 +46,7 @@ namespace TournamentTracker
             this.testListBox.Name = "testListBox";
             this.testListBox.Size = new System.Drawing.Size(365, 238);
             this.testListBox.TabIndex = 0;
+            this.testListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pairListbox_MouseDoubleClick);
             // 
             // PairngsForm
             // 

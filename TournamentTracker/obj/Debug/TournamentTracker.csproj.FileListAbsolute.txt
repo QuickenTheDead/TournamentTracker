@@ -18,3 +18,4 @@ C:\Users\cittah\Documents\SharpDevelop Projects\TournamentTrackerGit\TournamentT
 C:\Users\cittah\Documents\SharpDevelop Projects\TournamentTrackerGit\TournamentTracker\obj\Debug\TournamentTracker.csproj.GenerateResource.Cache
 C:\Users\cittah\Documents\SharpDevelop Projects\TournamentTrackerGit\TournamentTracker\obj\Debug\TournamentTracker.exe
 C:\Users\cittah\Documents\SharpDevelop Projects\TournamentTrackerGit\TournamentTracker\obj\Debug\TournamentTracker.pdb
+C:\Users\cittah\Documents\SharpDevelop Projects\TournamentTrackerGit\TournamentTracker\obj\Debug\TournamentTracker.ResultsRecorderForm.resources

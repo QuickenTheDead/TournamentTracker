@@ -5,16 +5,16 @@ using System.Text;
 
 namespace TournamentTracker
 {
-    class Pairing : IComparable<Pairing>
+    public class Pairing : IComparable<Pairing>
     {
         private Player myPlayer1 = new Player();
         private Player myPlayer2 = new Player();
         private int myTable;
         private int winningPlayer;
-        private int winningPlayerCP;
-        private int losingPlayerCP;
-        private int winningPlayerAP;
-        private int losingPlayerAP;
+        private int onePlayerCP;
+        private int twoPlayerCP;
+        private int onePlayerAP;
+        private int twoPlayerAP;
         public Pairing()
         {
 
@@ -77,55 +77,55 @@ namespace TournamentTracker
             }
         }
 
-        public int WinningPlayerCP
+        public int OnePlayerCP
         {
             get
             {
-                return winningPlayerCP;
+                return onePlayerCP;
             }
 
             set
             {
-                winningPlayerCP = value;
+                onePlayerCP = value;
             }
         }
 
-        public int LosingPlayerCP
+        public int TwoPlayerCP
         {
             get
             {
-                return losingPlayerCP;
+                return twoPlayerCP;
             }
 
             set
             {
-                losingPlayerCP = value;
+                twoPlayerCP = value;
             }
         }
 
-        public int WinningPlayerAP
+        public int OnePlayerAP
         {
             get
             {
-                return winningPlayerAP;
+                return onePlayerAP;
             }
 
             set
             {
-                winningPlayerAP = value;
+                onePlayerAP = value;
             }
         }
 
-        public int LosingPlayerAP
+        public int TwoPlayerAP
         {
             get
             {
-                return losingPlayerAP;
+                return twoPlayerAP;
             }
 
             set
             {
-                losingPlayerAP = value;
+                twoPlayerAP = value;
             }
         }
 

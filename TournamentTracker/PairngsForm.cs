@@ -19,7 +19,8 @@ namespace TournamentTracker
 	public partial class PairngsForm : Form
 	{
         Tournament tourny;
-
+        int index;
+        ResultsRecorderForm resultsForm;
         public PairngsForm()
 		{
 			//
@@ -49,9 +50,28 @@ namespace TournamentTracker
                 testListBox.Items.Add(pair.Player1.displayName + " " + pair.Player2.displayName + " " + pair.Table);
             }
         }
-		void Panel2Paint(object sender, PaintEventArgs e)
-		{
-	
-		}
-	}
+        void pairListbox_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            index = this.testListBox.IndexFromPoint(e.Location);
+            if (index != System.Windows.Forms.ListBox.NoMatches)
+            {
+                resultsForm = new ResultsRecorderForm(tourny.RoundList[0].PairingList[index]);
+                resultsForm.FormClosed += new FormClosedEventHandler(resultsForm_FormClosed);
+                resultsForm.Show();
+            }
+        }
+        void resultsForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if(resultsForm.thisPair.WinningPlayer == 1)
+            {
+                MessageBox.Show(tourny.RoundList[0].PairingList[index].Player1.firstName + " " + tourny.RoundList[0].PairingList[index].Player1.lastName + " WINS!","Winning Message");
+            }
+            else
+            {
+                MessageBox.Show(tourny.RoundList[0].PairingList[index].Player2.firstName + " " + tourny.RoundList[0].PairingList[index].Player2.lastName + " WINS!", "Winning Message");
+
+            }
+        }
+
+        }
 }
