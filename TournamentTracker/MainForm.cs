@@ -20,7 +20,8 @@ namespace TournamentTracker
 	{
 		public List<Player> lstPlayer = new List<Player>();
 		public PlayerInfoForm playerInfoForm = new PlayerInfoForm();
-		int index;
+        public PairngsForm pairform = new PairngsForm();
+        int index;
 		
 		public MainForm()
 		{
@@ -142,9 +143,17 @@ namespace TournamentTracker
 		}
 		void StartButtonClick(object sender, EventArgs e)
 		{
-			PairngsForm pairform = new PairngsForm();
-			pairform.Show();
+            if (IsOdd(lstPlayer.Count))
+            {
+                Player ByePlayer = new Player("BYE", "", "");
+                lstPlayer.Add(ByePlayer);
+            }
+            pairform = new PairngsForm(lstPlayer);
+            pairform.Show();
 		}
-
-	}
+        public static bool IsOdd(int value)
+        {
+            return value % 2 != 0;
+        }
+    }
 }

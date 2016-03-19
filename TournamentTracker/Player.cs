@@ -19,6 +19,10 @@ namespace TournamentTracker
 		private string myLastName;
 		private string myFaction;
 		private string myDisplayName;
+        private int wins;
+        private int loses;
+        private int controlPoints;
+        private int armyPointsDestroyed;
 		public Player()
 		{
 			
@@ -74,6 +78,57 @@ namespace TournamentTracker
                 return myDisplayName;
             }
         }
-    	
-	}
+
+        public int ControlPoints
+        {
+            get
+            {
+                return controlPoints;
+            }
+
+            set
+            {
+                controlPoints = value;
+            }
+        }
+
+        public int ArmyPointsDestroyed
+        {
+            get
+            {
+                return armyPointsDestroyed;
+            }
+
+            set
+            {
+                armyPointsDestroyed = value;
+            }
+        }
+
+        public int Wins
+        {
+            get
+            {
+                return wins;
+            }
+
+            set
+            {
+                wins = value;
+            }
+        }
+
+        public int Loses
+        {
+            get
+            {
+                return loses;
+            }
+
+            set
+            {
+                loses = value;
+            }
+        }
+    }
 }
