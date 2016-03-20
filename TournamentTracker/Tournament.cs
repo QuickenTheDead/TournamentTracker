@@ -15,7 +15,7 @@ using System.Text;
     /// <summary>
     /// Description of Tournament.
     /// </summary>
-    class Tournament
+    public class Tournament
     {
         private List<Player> playerList = new List<Player>();
         private List<Round> roundList = new List<Round>();

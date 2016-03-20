@@ -66,7 +66,7 @@ namespace TournamentTracker
         {
             if (resultsForm.actionType != "Cancel")
             {
-                //TODO : Create UID for Players in Player Class
+                
                 int oneIndex = tourny.PlayerList.FindIndex(x => x.Uid.Equals(tourny.RoundList[round].PairingList[index].Player1.Uid));
                 int twoIndex = tourny.PlayerList.FindIndex(x => x.Uid.Equals(tourny.RoundList[round].PairingList[index].Player2.Uid));
                 if (resultsForm.thisPair.WinningPlayer == 1)
@@ -81,8 +81,10 @@ namespace TournamentTracker
                 }
                 tourny.PlayerList[oneIndex].ArmyPointsDestroyed += resultsForm.thisPair.OnePlayerAP;
                 tourny.PlayerList[oneIndex].ControlPoints += resultsForm.thisPair.OnePlayerCP;
-                tourny.PlayerList[twoIndex].ArmyPointsDestroyed += resultsForm.thisPair.OnePlayerAP;
-                tourny.PlayerList[twoIndex].ControlPoints += resultsForm.thisPair.OnePlayerCP;
+                tourny.PlayerList[oneIndex].oppGuids.Add(tourny.PlayerList[twoIndex].Uid);
+                tourny.PlayerList[twoIndex].oppGuids.Add(tourny.PlayerList[oneIndex].Uid);
+                tourny.PlayerList[twoIndex].ArmyPointsDestroyed += resultsForm.thisPair.TwoPlayerAP;
+                tourny.PlayerList[twoIndex].ControlPoints += resultsForm.thisPair.TwoPlayerCP;
                 bool roundFinished = false;
                 foreach(Pairing pair in tourny.RoundList[round].PairingList)
                 {
@@ -128,8 +130,16 @@ namespace TournamentTracker
                 {
                     DataRow row = d.NewRow();
                     row["Table"] = pair.Table;
+                if(round==0)
+                {
                     row["Player1"] = pair.Player1.displayName;
                     row["Player2"] = pair.Player2.displayName;
+                }
+                else
+                {
+                    row["Player1"] = pair.Player1.MyDisplayNameWins;
+                    row["Player2"] = pair.Player2.MyDisplayNameWins;
+                }   
                     row["Complete"] = pair.Finished;
                     d.Rows.Add(row);
                 }
@@ -172,8 +182,26 @@ namespace TournamentTracker
                 Round newRound = new Round(tourny.PlayerList, round);
                 newRound.createPairings();
                 tourny.RoundList.Add(newRound);
-                refreshDataGridView();
+                
             }
+            previousRoundButton.Enabled = true;
+            refreshDataGridView();
+            roundgroupBox.Text = "Round " + (round + 1);
+        }
+
+        private void previousRoundButton_Click(object sender, EventArgs e)
+        {
+            round--;
+            if (round == 0)
+                previousRoundButton.Enabled = false;
+            roundgroupBox.Text = "Round " + (round + 1);
+            refreshDataGridView();
+        }
+
+        private void completeButton_Click(object sender, EventArgs e)
+        {
+            CompleteTournamentForm complete = new CompleteTournamentForm(tourny);
+            complete.Show();
         }
     }
 }

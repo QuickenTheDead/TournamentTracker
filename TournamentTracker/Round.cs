@@ -137,7 +137,7 @@ namespace TournamentTracker
                         bool playerPaired = false;
                         foreach (Pairing pair in pairingList)
                         {
-                            if (pair.Player1 == player || pair.Player2 == player)
+                            if (pair.Player1 == player || pair.Player2 == player || player.Dropped == true)
                             {
                                 playerPaired = true;
                             }
@@ -161,7 +161,7 @@ namespace TournamentTracker
                                     }
 
                                 }
-                                if (!playerLeftPairCountBool)
+                                if (!playerLeftPairCountBool || ply.Dropped == false)
                                     playersleft++;
                             }
                             if (playersleft != 1)
@@ -172,6 +172,7 @@ namespace TournamentTracker
                                     Random rnd = new Random();
                                     int playerIndex = rnd.Next(playerNum + 1, subPairList.Count);
                                     bool RndPlayerAlreadyPaired = false;
+                                    
                                     foreach (Pairing pair in pairingList)
                                     {
                                         if (pair.Player1 == subPairList[playerIndex] || pair.Player2 == subPairList[playerIndex])
@@ -180,7 +181,7 @@ namespace TournamentTracker
                                         }
 
                                     }
-                                    if (!RndPlayerAlreadyPaired)
+                                    if (!RndPlayerAlreadyPaired && subPairList[playerIndex].Dropped == false)
                                     {
                                         Pairing newPair = new Pairing();
                                         newPair.Player1 = player;
@@ -199,17 +200,11 @@ namespace TournamentTracker
                                         }
                                         pairingList.Add(newPair);
                                         playerPaired = true;
-                                       // if (pairingList.Count * 2 == subPairList.Count)
-                                       //     subPairList.Clear();
 
                                     }
                                 }
                             }
-                           /* else
-                            {
-                                subPairList.Clear();
-                                subPairList.Add(player);
-                            }*/
+                           
                         }
                     }
                     

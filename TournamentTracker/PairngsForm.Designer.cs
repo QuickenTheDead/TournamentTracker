@@ -74,6 +74,7 @@ namespace TournamentTracker
             this.previousRoundButton.TabIndex = 2;
             this.previousRoundButton.Text = "Previous";
             this.previousRoundButton.UseVisualStyleBackColor = true;
+            this.previousRoundButton.Click += new System.EventHandler(this.previousRoundButton_Click);
             // 
             // nextRoundbutton
             // 
@@ -113,6 +114,7 @@ namespace TournamentTracker
             this.completeButton.TabIndex = 6;
             this.completeButton.Text = "Complete Tournament";
             this.completeButton.UseVisualStyleBackColor = true;
+            this.completeButton.Click += new System.EventHandler(this.completeButton_Click);
             // 
             // searchGroupBox
             // 
