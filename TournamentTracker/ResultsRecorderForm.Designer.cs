@@ -43,6 +43,7 @@
             this.twoArmynumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.acceptButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.winnerLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.oneArmynumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.oneCPnumericUpDown)).BeginInit();
@@ -62,7 +63,7 @@
             // playerTwoLabel
             // 
             this.playerTwoLabel.AutoSize = true;
-            this.playerTwoLabel.Location = new System.Drawing.Point(146, 9);
+            this.playerTwoLabel.Location = new System.Drawing.Point(190, 9);
             this.playerTwoLabel.Name = "playerTwoLabel";
             this.playerTwoLabel.Size = new System.Drawing.Size(78, 13);
             this.playerTwoLabel.TabIndex = 1;
@@ -71,32 +72,31 @@
             // oneWinnerRadioButton
             // 
             this.oneWinnerRadioButton.AutoSize = true;
-            this.oneWinnerRadioButton.Location = new System.Drawing.Point(30, 3);
+            this.oneWinnerRadioButton.Location = new System.Drawing.Point(83, 5);
             this.oneWinnerRadioButton.Name = "oneWinnerRadioButton";
-            this.oneWinnerRadioButton.Size = new System.Drawing.Size(65, 17);
-            this.oneWinnerRadioButton.TabIndex = 2;
+            this.oneWinnerRadioButton.Size = new System.Drawing.Size(14, 13);
+            this.oneWinnerRadioButton.TabIndex = 1;
             this.oneWinnerRadioButton.TabStop = true;
-            this.oneWinnerRadioButton.Text = "Winner?";
             this.oneWinnerRadioButton.UseVisualStyleBackColor = true;
             // 
             // twoWinnerRadioButton
             // 
             this.twoWinnerRadioButton.AutoSize = true;
-            this.twoWinnerRadioButton.Location = new System.Drawing.Point(164, 3);
+            this.twoWinnerRadioButton.Location = new System.Drawing.Point(252, 3);
             this.twoWinnerRadioButton.Name = "twoWinnerRadioButton";
-            this.twoWinnerRadioButton.Size = new System.Drawing.Size(65, 17);
-            this.twoWinnerRadioButton.TabIndex = 3;
+            this.twoWinnerRadioButton.Size = new System.Drawing.Size(14, 13);
+            this.twoWinnerRadioButton.TabIndex = 2;
             this.twoWinnerRadioButton.TabStop = true;
-            this.twoWinnerRadioButton.Text = "Winner?";
             this.twoWinnerRadioButton.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.winnerLabel);
             this.panel1.Controls.Add(this.oneWinnerRadioButton);
             this.panel1.Controls.Add(this.twoWinnerRadioButton);
-            this.panel1.Location = new System.Drawing.Point(12, 25);
+            this.panel1.Location = new System.Drawing.Point(1, 25);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(255, 25);
+            this.panel1.Size = new System.Drawing.Size(310, 25);
             this.panel1.TabIndex = 4;
             // 
             // label1
@@ -120,7 +120,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(146, 63);
+            this.label3.Location = new System.Drawing.Point(190, 60);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(26, 13);
             this.label3.TabIndex = 7;
@@ -129,7 +129,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(146, 87);
+            this.label4.Location = new System.Drawing.Point(190, 87);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(62, 26);
             this.label4.TabIndex = 8;
@@ -140,54 +140,67 @@
             this.oneArmynumericUpDown.Location = new System.Drawing.Point(84, 92);
             this.oneArmynumericUpDown.Name = "oneArmynumericUpDown";
             this.oneArmynumericUpDown.Size = new System.Drawing.Size(56, 20);
-            this.oneArmynumericUpDown.TabIndex = 9;
+            this.oneArmynumericUpDown.TabIndex = 4;
             // 
             // oneCPnumericUpDown
             // 
             this.oneCPnumericUpDown.Location = new System.Drawing.Point(84, 60);
             this.oneCPnumericUpDown.Name = "oneCPnumericUpDown";
             this.oneCPnumericUpDown.Size = new System.Drawing.Size(56, 20);
-            this.oneCPnumericUpDown.TabIndex = 10;
+            this.oneCPnumericUpDown.TabIndex = 3;
             // 
             // twoCPnumericUpDown
             // 
-            this.twoCPnumericUpDown.Location = new System.Drawing.Point(209, 63);
+            this.twoCPnumericUpDown.Location = new System.Drawing.Point(253, 58);
             this.twoCPnumericUpDown.Name = "twoCPnumericUpDown";
             this.twoCPnumericUpDown.Size = new System.Drawing.Size(58, 20);
-            this.twoCPnumericUpDown.TabIndex = 11;
+            this.twoCPnumericUpDown.TabIndex = 5;
             // 
             // twoArmynumericUpDown
             // 
-            this.twoArmynumericUpDown.Location = new System.Drawing.Point(209, 92);
+            this.twoArmynumericUpDown.Location = new System.Drawing.Point(253, 92);
             this.twoArmynumericUpDown.Name = "twoArmynumericUpDown";
             this.twoArmynumericUpDown.Size = new System.Drawing.Size(58, 20);
-            this.twoArmynumericUpDown.TabIndex = 12;
+            this.twoArmynumericUpDown.TabIndex = 6;
             // 
             // acceptButton
             // 
-            this.acceptButton.Location = new System.Drawing.Point(42, 118);
+            this.acceptButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.acceptButton.Location = new System.Drawing.Point(84, 125);
             this.acceptButton.Name = "acceptButton";
             this.acceptButton.Size = new System.Drawing.Size(75, 23);
-            this.acceptButton.TabIndex = 13;
+            this.acceptButton.TabIndex = 7;
             this.acceptButton.Text = "Accept";
             this.acceptButton.UseVisualStyleBackColor = true;
             this.acceptButton.Click += new System.EventHandler(this.acceptButton_Click);
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(149, 118);
+            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancelButton.Location = new System.Drawing.Point(165, 125);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 14;
+            this.cancelButton.TabIndex = 8;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
+            // winnerLabel
+            // 
+            this.winnerLabel.AutoSize = true;
+            this.winnerLabel.Location = new System.Drawing.Point(11, 5);
+            this.winnerLabel.Name = "winnerLabel";
+            this.winnerLabel.Size = new System.Drawing.Size(41, 13);
+            this.winnerLabel.TabIndex = 4;
+            this.winnerLabel.Text = "Winner";
+            // 
             // ResultsRecorderForm
             // 
+            this.AcceptButton = this.acceptButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(279, 150);
+            this.CancelButton = this.cancelButton;
+            this.ClientSize = new System.Drawing.Size(335, 153);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.acceptButton);
             this.Controls.Add(this.twoArmynumericUpDown);
@@ -203,6 +216,7 @@
             this.Controls.Add(this.PlayerOneLabel);
             this.Name = "ResultsRecorderForm";
             this.Text = "ResultsRecorderForm";
+            this.Load += new System.EventHandler(this.ResultsRecorderForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.oneArmynumericUpDown)).EndInit();
@@ -231,5 +245,6 @@
         private System.Windows.Forms.NumericUpDown twoArmynumericUpDown;
         private System.Windows.Forms.Button acceptButton;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Label winnerLabel;
     }
 }

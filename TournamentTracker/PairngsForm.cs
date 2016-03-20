@@ -23,6 +23,7 @@ namespace TournamentTracker
         int index;
         ResultsRecorderForm resultsForm;
         List<string> columns = new List<string>();
+        int round= 0;
         public PairngsForm()
 		{
 			//
@@ -34,38 +35,65 @@ namespace TournamentTracker
 			// TODO: Add constructor code after the InitializeComponent() call.
 			//
 		}
-        public PairngsForm(List<Player> players)
+        public PairngsForm(List<Player> players, string name)
         {
             //
             // The InitializeComponent() call is required for Windows Forms designer support.
             //
+            
             InitializeComponent();
-            tourny = new Tournament(players);
+            tourny = new Tournament(players, name);
+            
+            this.Text = tourny.Name;
             columns.Add("Table");
             columns.Add("Player1");
             columns.Add("Player2");
             columns.Add("Complete");
-            refreshDataGridView();
+            //refreshDataGridView();
+            roundgroupBox.Text = "Round " + (round + 1);
+
             //
             // TODO: Add constructor code after the InitializeComponent() call.
             //
         }
         void PairngsFormLoad(object sender, EventArgs e)
 		{
-            
+            refreshDataGridView();
+            previousRoundButton.Enabled = false;
+            nextRoundbutton.Enabled = false;
         }
         void resultsForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (resultsForm.actionType != "Cancel")
             {
+                //TODO : Create UID for Players in Player Class
+                int oneIndex = tourny.PlayerList.FindIndex(x => x.Uid.Equals(tourny.RoundList[round].PairingList[index].Player1.Uid));
+                int twoIndex = tourny.PlayerList.FindIndex(x => x.Uid.Equals(tourny.RoundList[round].PairingList[index].Player2.Uid));
                 if (resultsForm.thisPair.WinningPlayer == 1)
                 {
-                    MessageBox.Show(tourny.RoundList[0].PairingList[index].Player1.firstName + " " + tourny.RoundList[0].PairingList[index].Player1.lastName + " WINS!", "Winning Message");
+                    MessageBox.Show(tourny.RoundList[round].PairingList[index].Player1.firstName + " " + tourny.RoundList[round].PairingList[index].Player1.lastName + " WINS!", "Winning Message");
+                    tourny.PlayerList[oneIndex].Wins++;
                 }
                 else
                 {
-                    MessageBox.Show(tourny.RoundList[0].PairingList[index].Player2.firstName + " " + tourny.RoundList[0].PairingList[index].Player2.lastName + " WINS!", "Winning Message");
-
+                    MessageBox.Show(tourny.RoundList[round].PairingList[index].Player2.firstName + " " + tourny.RoundList[round].PairingList[index].Player2.lastName + " WINS!", "Winning Message");
+                    tourny.PlayerList[twoIndex].Wins++;
+                }
+                tourny.PlayerList[oneIndex].ArmyPointsDestroyed += resultsForm.thisPair.OnePlayerAP;
+                tourny.PlayerList[oneIndex].ControlPoints += resultsForm.thisPair.OnePlayerCP;
+                tourny.PlayerList[twoIndex].ArmyPointsDestroyed += resultsForm.thisPair.OnePlayerAP;
+                tourny.PlayerList[twoIndex].ControlPoints += resultsForm.thisPair.OnePlayerCP;
+                bool roundFinished = false;
+                foreach(Pairing pair in tourny.RoundList[round].PairingList)
+                {
+                    if(pair.Finished == false)
+                    {
+                        roundFinished = true;
+                    }
+                }
+                if(roundFinished)
+                {
+                    nextRoundbutton.Enabled = true;
                 }
                 refreshDataGridView();
             }
@@ -77,7 +105,7 @@ namespace TournamentTracker
             if (e.ColumnIndex == 3)
             {
                 index = e.RowIndex;
-                resultsForm = new ResultsRecorderForm(tourny.RoundList[0].PairingList[index]);
+                resultsForm = new ResultsRecorderForm(tourny.RoundList[round].PairingList[index]);
                 resultsForm.FormClosed += new FormClosedEventHandler(resultsForm_FormClosed);
                 resultsForm.Show();
             }
@@ -96,7 +124,7 @@ namespace TournamentTracker
                 d.Columns.Add(name);
             }
                 // Put every column's numbers in this List.
-                foreach (Pairing pair in tourny.RoundList[0].PairingList)
+                foreach (Pairing pair in tourny.RoundList[round].PairingList)
                 {
                     DataRow row = d.NewRow();
                     row["Table"] = pair.Table;
@@ -114,11 +142,12 @@ namespace TournamentTracker
             pairingDataGridView.DataSource = null;
             pairingDataGridView.DataSource = GetResultsTable();
             pairingDataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            pairingDataGridView.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             int index = 0;
             foreach (DataGridViewRow row in pairingDataGridView.Rows)
             {
                 DataGridViewCellStyle style = new DataGridViewCellStyle();
-                if(tourny.RoundList[0].PairingList[index].Finished == false)
+                if(tourny.RoundList[round].PairingList[index].Finished == false)
                 {
                     style.BackColor = Color.LightSalmon;
                     style.ForeColor = Color.Black;
@@ -133,6 +162,18 @@ namespace TournamentTracker
                 index++;
             }
 
+        }
+
+        private void nextRoundbutton_Click(object sender, EventArgs e)
+        {
+            round++;
+            if (tourny.RoundList.Count < round+1)
+            {
+                Round newRound = new Round(tourny.PlayerList, round);
+                newRound.createPairings();
+                tourny.RoundList.Add(newRound);
+                refreshDataGridView();
+            }
         }
     }
 }

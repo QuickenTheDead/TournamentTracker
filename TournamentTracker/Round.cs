@@ -53,9 +53,9 @@ namespace TournamentTracker
             this.playersList = players;
             this.roundNumber = rndNum;
         }
-        public void StartRound()
+        public void createPairings()
         {
-            if(roundNumber==1)
+            if(roundNumber==0)
             {
                 int playerNum = -1;
                 int tableCount = 0;   
@@ -95,18 +95,124 @@ namespace TournamentTracker
                                 if (playersList[playerIndex].firstName == "BYE" && playersList[playerIndex].lastName == "")
                                 {
                                     newPair.Table = 0;
+                                    newPair.WinningPlayer = 1;
+                                    newPair.Finished = true;
+
                                 }
                                 else
                                 {
                                     tableCount++;
                                     newPair.Table = tableCount;
                                 }
+                                
                                 pairingList.Add(newPair);
                                 playerPaired = true;
+                                
                             }
                         }
                         
                     }
+                }
+                pairingList.Sort();
+            }
+            else
+            {
+                List<Player> subPairList = new List<Player>();
+                int tableCount = 0;
+                
+                for (int x = roundNumber; x >= 0; x--)
+                {
+                    int playerNum = -1;
+                    foreach (Player plyr in playersList)
+                    {
+                        if (plyr.Wins == x)
+                        {
+                            subPairList.Add(plyr);
+                        }
+                    }
+                    
+                    foreach (Player player in subPairList)
+                    {
+                        playerNum++;
+                        bool playerPaired = false;
+                        foreach (Pairing pair in pairingList)
+                        {
+                            if (pair.Player1 == player || pair.Player2 == player)
+                            {
+                                playerPaired = true;
+                            }
+
+                        }
+                        if (!playerPaired)
+                        {
+                            //CHECK IF WE HAVE A PAIRDOWN
+                            int playersleft = 0;
+                            int leftIndex = -1;
+                            
+                            foreach (Player ply in subPairList)
+                            {
+                                bool playerLeftPairCountBool=false;
+                                leftIndex++;
+                                foreach (Pairing pair in pairingList)
+                                {
+                                    if (pair.Player1 == subPairList[leftIndex] || pair.Player2 == subPairList[leftIndex])
+                                    {
+                                        playerLeftPairCountBool= true;
+                                    }
+
+                                }
+                                if (!playerLeftPairCountBool)
+                                    playersleft++;
+                            }
+                            if (playersleft != 1)
+                            {
+                                //If player isnt paired
+                                while (!playerPaired)
+                                {
+                                    Random rnd = new Random();
+                                    int playerIndex = rnd.Next(playerNum + 1, subPairList.Count);
+                                    bool RndPlayerAlreadyPaired = false;
+                                    foreach (Pairing pair in pairingList)
+                                    {
+                                        if (pair.Player1 == subPairList[playerIndex] || pair.Player2 == subPairList[playerIndex])
+                                        {
+                                            RndPlayerAlreadyPaired = true;
+                                        }
+
+                                    }
+                                    if (!RndPlayerAlreadyPaired)
+                                    {
+                                        Pairing newPair = new Pairing();
+                                        newPair.Player1 = player;
+                                        newPair.Player2 = subPairList[playerIndex];
+                                        if (subPairList[playerIndex].firstName == "BYE" && subPairList[playerIndex].lastName == "")
+                                        {
+                                            newPair.Table = 0;
+                                            newPair.WinningPlayer = 1;
+                                            newPair.Finished = true;
+
+                                        }
+                                        else
+                                        {
+                                            tableCount++;
+                                            newPair.Table = tableCount;
+                                        }
+                                        pairingList.Add(newPair);
+                                        playerPaired = true;
+                                       // if (pairingList.Count * 2 == subPairList.Count)
+                                       //     subPairList.Clear();
+
+                                    }
+                                }
+                            }
+                           /* else
+                            {
+                                subPairList.Clear();
+                                subPairList.Add(player);
+                            }*/
+                        }
+                    }
+                    
                 }
                 pairingList.Sort();
             }

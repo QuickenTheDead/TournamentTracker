@@ -24,7 +24,18 @@ namespace TournamentTracker
             InitializeComponent();
             PlayerOneLabel.Text = pair.Player1.displayName;
             playerTwoLabel.Text = pair.Player2.displayName;
-            oneWinnerRadioButton.Checked = true;
+            oneCPnumericUpDown.Value = pair.OnePlayerCP;
+            oneArmynumericUpDown.Value = pair.OnePlayerAP;
+            twoCPnumericUpDown.Value = pair.TwoPlayerCP;
+            twoArmynumericUpDown.Value = pair.TwoPlayerAP;
+            if (pair.WinningPlayer == 0 || pair.WinningPlayer == 1)
+            {
+                oneWinnerRadioButton.Checked = true;
+            }
+            else
+            {
+                twoWinnerRadioButton.Checked = true;
+            }
         }
 
         private void acceptButton_Click(object sender, EventArgs e)
@@ -50,6 +61,11 @@ namespace TournamentTracker
         private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void ResultsRecorderForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

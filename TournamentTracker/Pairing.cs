@@ -10,21 +10,21 @@ namespace TournamentTracker
         private Player myPlayer1 = new Player();
         private Player myPlayer2 = new Player();
         private int myTable;
-        private int winningPlayer;
-        private int onePlayerCP;
-        private int twoPlayerCP;
-        private int onePlayerAP;
-        private int twoPlayerAP;
-        private bool finished;
+        private int winningPlayer= 0;
+        private int onePlayerCP = 0;
+        private int twoPlayerCP = 0;
+        private int onePlayerAP= 0;
+        private int twoPlayerAP= 0;
+        private bool finished = false;
         public Pairing()
         {
 
         }
-        public Pairing(Player playerIn1,Player playerIn2, int tableNum)
+        public Pairing(ref Player playerIn1, ref Player playerIn2)
         {
             this.myPlayer1 = playerIn1;
             this.myPlayer2 = playerIn2;
-            this.myTable = tableNum;
+            
         }
 
         public Player Player2

@@ -24,6 +24,8 @@ namespace TournamentTracker
         private int loses;
         private int controlPoints;
         private int armyPointsDestroyed;
+        private int uid;
+        private string myDisplayNameWins;
 		public Player()
 		{
 			
@@ -116,6 +118,7 @@ namespace TournamentTracker
             set
             {
                 wins = value;
+                myDisplayNameWins = myFirstName + " " + myLastName + " " + " (" + myFaction + ")" + " (" + wins + ")";
             }
         }
 
@@ -143,6 +146,28 @@ namespace TournamentTracker
             {
                 dropped = value;
             }
+        }
+
+        public int Uid
+        {
+            get
+            {
+                return uid;
+            }
+
+            set
+            {
+                uid = value;
+            }
+        }
+
+        public string MyDisplayNameWins
+        {
+            get
+            {
+                return myDisplayNameWins;
+            }
+
         }
     }
 }

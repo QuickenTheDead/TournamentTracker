@@ -19,11 +19,13 @@ using System.Text;
     {
         private List<Player> playerList = new List<Player>();
         private List<Round> roundList = new List<Round>();
-        public Tournament(List<Player> players)
+        private string name;
+        public Tournament(List<Player> players, string tournName)
         {
-            this.playerList = players;
-            Round round = new Round(players, 1);
-            round.StartRound();
+            this.name = tournName;
+            this.playerList.AddRange(players);
+            Round round = new Round(players, 0);
+            round.createPairings();
             roundList.Add(round);
 
         }
@@ -51,6 +53,19 @@ using System.Text;
             set
             {
                 roundList = value;
+            }
+        }
+
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+
+            set
+            {
+                name = value;
             }
         }
     }

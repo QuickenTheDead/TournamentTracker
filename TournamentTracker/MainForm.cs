@@ -22,7 +22,7 @@ namespace TournamentTracker
 		public PlayerInfoForm playerInfoForm = new PlayerInfoForm();
         public PairngsForm pairform = new PairngsForm();
         int index;
-		
+        int playerUID = 100;
 		public MainForm()
 		{
 			//
@@ -64,8 +64,9 @@ namespace TournamentTracker
 			{
 				
 				Player newPlayer = new Player(firstNameTextBox.Text,lastNameTextBox.Text,factionComboBox.Text);
-				
-				testLabel.Text = newPlayer.firstName + " " + newPlayer.lastName + " " + newPlayer.faction;
+                newPlayer.Uid = playerUID;
+                playerUID++;
+				testLabel.Text = newPlayer.firstName + " " + newPlayer.lastName + " " + newPlayer.Uid;
 				lstPlayer.Add(newPlayer);
 				
 				playersListbox.DataSource= null;
@@ -143,14 +144,32 @@ namespace TournamentTracker
 		}
 		void StartButtonClick(object sender, EventArgs e)
 		{
-            if (IsOdd(lstPlayer.Count))
+            if (tournNameTextBox.Text == "")
             {
-                Player ByePlayer = new Player("BYE", "", "");
-                lstPlayer.Add(ByePlayer);
+                MessageBox.Show("Please Enter A Name For This Tournamnet", "Error Message");
             }
-            pairform = new PairngsForm(lstPlayer);
-            pairform.Show();
-		}
+            else if (lstPlayer.Count == 0)
+            {
+                MessageBox.Show("Cannot Start Tournament With 0 Players", "Error Message");
+            }
+            else
+            {
+                if (IsOdd(lstPlayer.Count))
+                {
+                    Player ByePlayer = new Player("BYE", "", "");
+                    lstPlayer.Add(ByePlayer);
+                }
+                pairform = new PairngsForm(lstPlayer, tournNameTextBox.Text);
+                pairform.Show();
+                lstPlayer.Clear();
+                playerCountLabel.Text = "Player Count : " + lstPlayer.Count;
+
+                playersListbox.DataSource = null;
+                playersListbox.DataSource = lstPlayer;
+                playersListbox.DisplayMember = "displayName";
+                tournNameTextBox.Text = "";
+            }
+        }
         public static bool IsOdd(int value)
         {
             return value % 2 != 0;
