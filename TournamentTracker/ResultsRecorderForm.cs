@@ -67,5 +67,25 @@ namespace TournamentTracker
         {
 
         }
+
+        private void oneCPnumericUpDown_Enter(object sender, EventArgs e)
+        {
+            oneCPnumericUpDown.Select(0, 3);
+        }
+
+        private void twoCPnumericUpDown_Enter(object sender, EventArgs e)
+        {
+            twoCPnumericUpDown.Select(0, 3);
+        }
+
+        private void oneArmynumericUpDown_Enter(object sender, EventArgs e)
+        {
+            oneArmynumericUpDown.Select(0, 3);
+        }
+
+        private void twoArmynumericUpDown_Enter(object sender, EventArgs e)
+        {
+            twoArmynumericUpDown.Select(0, 3);
+        }
     }
 }

@@ -37,10 +37,44 @@ namespace TournamentTracker
                 
             }
             tourny.PlayerList.Sort();
-            richTextBox1.Text = "FirstName,LastName,Faction,Wins,Sos,CP,APD";
-            foreach(Player Plyr in tourny.PlayerList)
+            standings();
+        }
+        private void standings()
+        {
+            richTextBox1.Text = String.Format("{0,-15},{1,-15},{2,-22},{3,1},{4,3},{5,3},{6,3}",
+                                    "First Name",
+                                    "Last Name",
+                                    "Faction",
+                                    "W",
+                                    "SOS",
+                                    "CPs",
+                                    "APD");
+            foreach (Player Plyr in tourny.PlayerList)
             {
-                richTextBox1.Text = richTextBox1.Text + "\n" + Plyr.firstName + "," + Plyr.lastName + "," + Plyr.faction + "," + Plyr.Wins + "," + Plyr.SOS + "," + Plyr.ControlPoints + "," + Plyr.ArmyPointsDestroyed;
+
+                richTextBox1.Text = String.Format(richTextBox1.Text + "\n{0,-15},{1,-15},{2,-22},{3,1},{4,3},{5,3},{6,3}",
+                                    Plyr.firstName,
+                                    Plyr.lastName,
+                                    Plyr.faction,
+                                    Plyr.Wins,
+                                    Plyr.SOS,
+                                    Plyr.ControlPoints,
+                                    Plyr.ArmyPointsDestroyed);
+            }
+        }
+
+        private void standingButton_Click(object sender, EventArgs e)
+        {
+            standings();
+        }
+
+        private void exportButton_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Text = "Player";
+            foreach (Player Plyr in tourny.PlayerList)
+            {
+
+                richTextBox1.Text = richTextBox1.Text + ",\n" + Plyr.firstName + " " + Plyr.lastName;
             }
         }
     }

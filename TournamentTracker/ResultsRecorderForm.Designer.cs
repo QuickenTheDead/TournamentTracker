@@ -33,6 +33,7 @@
             this.oneWinnerRadioButton = new System.Windows.Forms.RadioButton();
             this.twoWinnerRadioButton = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.winnerLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,7 +44,6 @@
             this.twoArmynumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.acceptButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.winnerLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.oneArmynumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.oneCPnumericUpDown)).BeginInit();
@@ -97,7 +97,16 @@
             this.panel1.Location = new System.Drawing.Point(1, 25);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(310, 25);
-            this.panel1.TabIndex = 4;
+            this.panel1.TabIndex = 2;
+            // 
+            // winnerLabel
+            // 
+            this.winnerLabel.AutoSize = true;
+            this.winnerLabel.Location = new System.Drawing.Point(11, 5);
+            this.winnerLabel.Name = "winnerLabel";
+            this.winnerLabel.Size = new System.Drawing.Size(41, 13);
+            this.winnerLabel.TabIndex = 4;
+            this.winnerLabel.Text = "Winner";
             // 
             // label1
             // 
@@ -141,6 +150,7 @@
             this.oneArmynumericUpDown.Name = "oneArmynumericUpDown";
             this.oneArmynumericUpDown.Size = new System.Drawing.Size(56, 20);
             this.oneArmynumericUpDown.TabIndex = 4;
+            this.oneArmynumericUpDown.Enter += new System.EventHandler(this.oneArmynumericUpDown_Enter);
             // 
             // oneCPnumericUpDown
             // 
@@ -148,6 +158,7 @@
             this.oneCPnumericUpDown.Name = "oneCPnumericUpDown";
             this.oneCPnumericUpDown.Size = new System.Drawing.Size(56, 20);
             this.oneCPnumericUpDown.TabIndex = 3;
+            this.oneCPnumericUpDown.Enter += new System.EventHandler(this.oneCPnumericUpDown_Enter);
             // 
             // twoCPnumericUpDown
             // 
@@ -155,6 +166,7 @@
             this.twoCPnumericUpDown.Name = "twoCPnumericUpDown";
             this.twoCPnumericUpDown.Size = new System.Drawing.Size(58, 20);
             this.twoCPnumericUpDown.TabIndex = 5;
+            this.twoCPnumericUpDown.Enter += new System.EventHandler(this.twoCPnumericUpDown_Enter);
             // 
             // twoArmynumericUpDown
             // 
@@ -162,6 +174,7 @@
             this.twoArmynumericUpDown.Name = "twoArmynumericUpDown";
             this.twoArmynumericUpDown.Size = new System.Drawing.Size(58, 20);
             this.twoArmynumericUpDown.TabIndex = 6;
+            this.twoArmynumericUpDown.Enter += new System.EventHandler(this.twoArmynumericUpDown_Enter);
             // 
             // acceptButton
             // 
@@ -184,15 +197,6 @@
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
-            // 
-            // winnerLabel
-            // 
-            this.winnerLabel.AutoSize = true;
-            this.winnerLabel.Location = new System.Drawing.Point(11, 5);
-            this.winnerLabel.Name = "winnerLabel";
-            this.winnerLabel.Size = new System.Drawing.Size(41, 13);
-            this.winnerLabel.TabIndex = 4;
-            this.winnerLabel.Text = "Winner";
             // 
             // ResultsRecorderForm
             // 

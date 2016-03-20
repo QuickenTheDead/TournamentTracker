@@ -71,12 +71,12 @@ namespace TournamentTracker
                 int twoIndex = tourny.PlayerList.FindIndex(x => x.Uid.Equals(tourny.RoundList[round].PairingList[index].Player2.Uid));
                 if (resultsForm.thisPair.WinningPlayer == 1)
                 {
-                    MessageBox.Show(tourny.RoundList[round].PairingList[index].Player1.firstName + " " + tourny.RoundList[round].PairingList[index].Player1.lastName + " WINS!", "Winning Message");
+                    //MessageBox.Show(tourny.RoundList[round].PairingList[index].Player1.firstName + " " + tourny.RoundList[round].PairingList[index].Player1.lastName + " WINS!", "Winning Message");
                     tourny.PlayerList[oneIndex].Wins++;
                 }
                 else
                 {
-                    MessageBox.Show(tourny.RoundList[round].PairingList[index].Player2.firstName + " " + tourny.RoundList[round].PairingList[index].Player2.lastName + " WINS!", "Winning Message");
+                    //MessageBox.Show(tourny.RoundList[round].PairingList[index].Player2.firstName + " " + tourny.RoundList[round].PairingList[index].Player2.lastName + " WINS!", "Winning Message");
                     tourny.PlayerList[twoIndex].Wins++;
                 }
                 tourny.PlayerList[oneIndex].ArmyPointsDestroyed += resultsForm.thisPair.OnePlayerAP;
