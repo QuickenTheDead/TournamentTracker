@@ -85,12 +85,12 @@ namespace TournamentTracker
                 tourny.PlayerList[twoIndex].oppGuids.Add(tourny.PlayerList[oneIndex].Uid);
                 tourny.PlayerList[twoIndex].ArmyPointsDestroyed += resultsForm.thisPair.TwoPlayerAP;
                 tourny.PlayerList[twoIndex].ControlPoints += resultsForm.thisPair.TwoPlayerCP;
-                bool roundFinished = false;
+                bool roundFinished = true;
                 foreach(Pairing pair in tourny.RoundList[round].PairingList)
                 {
                     if(pair.Finished == false)
                     {
-                        roundFinished = true;
+                        roundFinished = false;
                     }
                 }
                 if(roundFinished)

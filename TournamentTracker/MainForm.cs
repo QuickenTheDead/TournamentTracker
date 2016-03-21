@@ -77,8 +77,8 @@ namespace TournamentTracker
 				lastNameTextBox.Clear();
 				factionComboBox.SelectedIndex = 0;
 				factionComboBox.SelectedItem = null;
-				playerCountLabel.Text = "Player Count : " + lstPlayer.Count;
-				firstNameTextBox.Focus();
+                setLabels();
+                firstNameTextBox.Focus();
 			}
 
 		}
@@ -92,9 +92,9 @@ namespace TournamentTracker
 				playersListbox.DataSource= null;
 				playersListbox.DataSource= lstPlayer;
 				playersListbox.DisplayMember="displayName";
-				playerCountLabel.Text = "Player Count : " + lstPlayer.Count;
-				
-			}
+                setLabels();
+
+            }
 			else if(playerInfoForm.Action=="Update")
 			{
 				lstPlayer[index] = playerInfoForm.player;
@@ -135,14 +135,28 @@ namespace TournamentTracker
 			if(result1 == DialogResult.Yes)
 			{			
 				lstPlayer.Clear();
-				playerCountLabel.Text = "Player Count : " + lstPlayer.Count;
-	
-				playersListbox.DataSource= null;
+                setLabels();
+                playersListbox.DataSource= null;
 				playersListbox.DataSource= lstPlayer;
 				playersListbox.DisplayMember="displayName";
 			}
 		}
-		void StartButtonClick(object sender, EventArgs e)
+
+        private int calcRounds()
+        {
+            int rounds = 0;
+            int playerCount = lstPlayer.Count;
+            while(playerCount > 1)
+            {
+                rounds++;
+                if (IsOdd(playerCount))
+                    playerCount++;
+                playerCount = playerCount / 2;
+            }
+            return rounds;
+        }
+
+        void StartButtonClick(object sender, EventArgs e)
 		{
             if (tournNameTextBox.Text == "")
             {
@@ -157,13 +171,13 @@ namespace TournamentTracker
                 if (IsOdd(lstPlayer.Count))
                 {
                     Player ByePlayer = new Player("BYE", "", "");
+                    ByePlayer.Uid = 50;
                     lstPlayer.Add(ByePlayer);
                 }
                 pairform = new PairngsForm(lstPlayer, tournNameTextBox.Text);
                 pairform.Show();
                 lstPlayer.Clear();
-                playerCountLabel.Text = "Player Count : " + lstPlayer.Count;
-
+                setLabels();
                 playersListbox.DataSource = null;
                 playersListbox.DataSource = lstPlayer;
                 playersListbox.DisplayMember = "displayName";
@@ -173,6 +187,15 @@ namespace TournamentTracker
         public static bool IsOdd(int value)
         {
             return value % 2 != 0;
+        }
+        void setLabels()
+        {
+            playerCountLabel.Text = "Player Count : " + lstPlayer.Count;
+            if (IsOdd(lstPlayer.Count))
+                tablesLabel.Text = "Tables :" + ((lstPlayer.Count - 1) / 2);
+            else
+                tablesLabel.Text = "Tables :" + ((lstPlayer.Count) / 2);
+            roundslabel.Text = "Max Rounds : " + calcRounds();
         }
     }
 }

@@ -14,7 +14,7 @@ namespace TournamentTracker
     /// <summary>
     /// Description of Player.
     /// </summary>
-    public class Player : IEquatable<Player> , IComparable<Player>
+    public class Player : IComparable<Player>
 
     {
         private string myFirstName;
@@ -226,18 +226,18 @@ namespace TournamentTracker
             return comparePlayer.Wins.CompareTo(this.Wins);
             
         }
-        public override bool Equals(object obj)
-        {
-            if (obj == null) return false;
-            Player objAsPlayer = obj as Player;
-            if (objAsPlayer == null) return false;
-            else return Equals(objAsPlayer);
-        }
-        public bool Equals(Player other)
-        {
-            if (other == null) return false;
-            return (this.Wins.Equals(other.Wins));
-        }
+        //public override bool Equals(object obj)
+        //{
+        //    if (obj == null) return false;
+        //    Player objAsPlayer = obj as Player;
+        //    if (objAsPlayer == null) return false;
+        //    else return Equals(objAsPlayer);
+        //}
+        //public bool Equals(Player other)
+        //{
+        //    if (other == null) return false;
+        //    return (this.Wins.Equals(other.Wins));
+        //}
 
     }
 }

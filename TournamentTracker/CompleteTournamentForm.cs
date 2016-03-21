@@ -29,6 +29,7 @@ namespace TournamentTracker
             
             foreach(Player player in tourny.PlayerList)
             {
+                player.SOS = 0;
                 foreach(int guid in player.oppGuids)
                 { 
                     int index = tourny.PlayerList.FindIndex(x => x.Uid.Equals(guid));
@@ -41,7 +42,8 @@ namespace TournamentTracker
         }
         private void standings()
         {
-            richTextBox1.Text = String.Format("{0,-15},{1,-15},{2,-22},{3,1},{4,3},{5,3},{6,3}",
+            richTextBox1.Text = String.Format("{0,-3},{1,-15},{2,-15},{3,-22},{4,1},{5,3},{6,3},{7,3}",
+                                    "#",
                                     "First Name",
                                     "Last Name",
                                     "Faction",
@@ -49,10 +51,12 @@ namespace TournamentTracker
                                     "SOS",
                                     "CPs",
                                     "APD");
+            int rank = 0;
             foreach (Player Plyr in tourny.PlayerList)
             {
-
-                richTextBox1.Text = String.Format(richTextBox1.Text + "\n{0,-15},{1,-15},{2,-22},{3,1},{4,3},{5,3},{6,3}",
+                rank++;
+                richTextBox1.Text = String.Format(richTextBox1.Text + "\n{0,-3},{1,-15},{2,-15},{3,-22},{4,1},{5,3},{6,3},{7,3}",
+                                    rank,    
                                     Plyr.firstName,
                                     Plyr.lastName,
                                     Plyr.faction,
