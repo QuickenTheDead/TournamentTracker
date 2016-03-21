@@ -170,47 +170,82 @@ namespace TournamentTracker
                                 if (playersleft != 1)
                                 {
                                     //If player isnt paired
+                                    
                                     while (!playerPaired)
                                     {
-                                        Random rnd = new Random();
-                                        int playerIndex = rnd.Next(playerNum + 1, subPairList.Count);
-                                        bool RndPlayerAlreadyPaired = false;
-
-                                        foreach (Pairing pair in pairingList)
+                                        bool alreadyPlayed = true;
+                                        bool RndPlayerAlreadyPaired;
+                                        int playerIndex=0;
+                                        while (alreadyPlayed)
                                         {
-                                            if (pair.Player1 == subPairList[playerIndex] || pair.Player2 == subPairList[playerIndex])
-                                            {
-                                                RndPlayerAlreadyPaired = true;
-                                            }
+                                            alreadyPlayed = false;
+                                            Random rnd = new Random();
+                                            playerIndex = rnd.Next(playerNum + 1, subPairList.Count);
 
+
+                                            //Reset if Players play each other
+                                            //TODO
+                                            foreach (int guid in player.oppGuids)
+                                            {
+                                                if (guid == subPairList[playerIndex].Uid)
+                                                {
+                                                    alreadyPlayed = true;
+                                                    //TODO:WHAT IF THE players has already played the last 3 players? 4? etc.
+                                                    if (playersleft == 2)
+                                                    {
+                                                        successfulPairing = false;
+                                                        
+                                                    }
+                                                }
+                                            }
+                                            if(!successfulPairing)
+                                                break;
                                         }
-                                        if (!RndPlayerAlreadyPaired && subPairList[playerIndex].Dropped == false)
+                                        if (successfulPairing)
                                         {
-                                            Pairing newPair = new Pairing();
-                                            newPair.Player1 = player;
-                                            newPair.Player2 = subPairList[playerIndex];
-                                            if (subPairList[playerIndex].Uid == 50)
+                                            RndPlayerAlreadyPaired = false;
+                                            foreach (Pairing pair in pairingList)
                                             {
-                                                newPair.Table = 0;
-                                                newPair.WinningPlayer = 1;
-                                                newPair.Finished = true;
+                                                if (pair.Player1 == subPairList[playerIndex] || pair.Player2 == subPairList[playerIndex])
+                                                {
+                                                    RndPlayerAlreadyPaired = true;
+                                                }
 
                                             }
-                                            else
-                                            {
-                                                tableCount++;
-                                                newPair.Table = tableCount;
-                                            }
-                                            pairingList.Add(newPair);
-                                            playerPaired = true;
 
+                                            if (!RndPlayerAlreadyPaired && subPairList[playerIndex].Dropped == false)
+                                            {
+                                                Pairing newPair = new Pairing();
+                                                newPair.Player1 = player;
+                                                newPair.Player2 = subPairList[playerIndex];
+                                                if (subPairList[playerIndex].Uid == 50)
+                                                {
+                                                    newPair.Table = 0;
+                                                    newPair.WinningPlayer = 1;
+                                                    newPair.Finished = true;
+
+                                                }
+                                                else
+                                                {
+                                                    tableCount++;
+                                                    newPair.Table = tableCount;
+                                                }
+                                                pairingList.Add(newPair);
+                                                playerPaired = true;
+
+                                            }
                                         }
+                                        if (!successfulPairing)
+                                            break;
                                     }
                                 }
 
                             }
+                            if (!successfulPairing)
+                                break;
                         }
-
+                        if (!successfulPairing)
+                            break;
                     }
                 }
                 pairingList.Sort();
