@@ -284,8 +284,9 @@ namespace TournamentTracker
             this.Controls.Add(this.addPlayerGroupBox);
             this.Controls.Add(this.testLabel);
             this.Controls.Add(this.playersListbox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "MainForm";
-            this.Text = "TournamentTracker";
+            this.Text = "DohTwo";
             this.Load += new System.EventHandler(this.MainFormLoad);
             this.addPlayerGroupBox.ResumeLayout(false);
             this.addPlayerGroupBox.PerformLayout();

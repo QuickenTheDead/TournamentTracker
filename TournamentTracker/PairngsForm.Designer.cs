@@ -112,7 +112,7 @@ namespace TournamentTracker
             this.completeButton.Name = "completeButton";
             this.completeButton.Size = new System.Drawing.Size(124, 23);
             this.completeButton.TabIndex = 6;
-            this.completeButton.Text = "Complete Tournament";
+            this.completeButton.Text = "Standings";
             this.completeButton.UseVisualStyleBackColor = true;
             this.completeButton.Click += new System.EventHandler(this.completeButton_Click);
             // 

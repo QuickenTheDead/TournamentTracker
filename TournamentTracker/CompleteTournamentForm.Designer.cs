@@ -81,8 +81,11 @@
             this.Controls.Add(this.exportButton);
             this.Controls.Add(this.printButton);
             this.Controls.Add(this.richTextBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "CompleteTournamentForm";
-            this.Text = "CompleteTournamentForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Standings";
             this.ResumeLayout(false);
 
         }

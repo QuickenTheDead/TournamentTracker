@@ -56,6 +56,12 @@
     <Compile Include="CompleteTournamentForm.Designer.cs">
       <DependentUpon>CompleteTournamentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="dropSwapForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dropSwapForm.Designer.cs">
+      <DependentUpon>dropSwapForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pairing.cs" />
     <Compile Include="ResultsRecorderForm.cs">
       <SubType>Form</SubType>
@@ -85,6 +91,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SwapForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SwapForm.Designer.cs">
+      <DependentUpon>SwapForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TableForm.Designer.cs">
+      <DependentUpon>TableForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tournament.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +112,9 @@
   <ItemGroup>
     <EmbeddedResource Include="CompleteTournamentForm.resx">
       <DependentUpon>CompleteTournamentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dropSwapForm.resx">
+      <DependentUpon>dropSwapForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -106,6 +127,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ResultsRecorderForm.resx">
       <DependentUpon>ResultsRecorderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwapForm.resx">
+      <DependentUpon>SwapForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TableForm.resx">
+      <DependentUpon>TableForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

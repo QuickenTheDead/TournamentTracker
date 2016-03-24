@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace TournamentTracker
 {
@@ -53,7 +54,110 @@ namespace TournamentTracker
             this.playersList = players;
             this.roundNumber = rndNum;
         }
+        
+        #region NewPairingLogic
         public void createPairings()
+        {
+            List<Player> subPairList = new List<Player>();
+            List<Player> pairListFinal = new List<Player>();
+            int tableCount = 1;
+            
+            for (int x = roundNumber; x >= 0; x--)
+            {
+                Player savePlayer = new Player("NA", "NA", "NA");
+                if(subPairList.Count==1)
+                {
+                    savePlayer = subPairList[0];
+                    subPairList.Clear();
+                }
+                //Load Players into the sublist
+                foreach (Player plyr in playersList)
+                {
+                    if (plyr.Wins == x && plyr.Uid != 50 && plyr.Dropped == false)
+                    {
+                        subPairList.Add(plyr);
+                    }
+                }
+                bool successfullPairing = false;
+                int iterations = 0;
+                while (!successfullPairing)
+                {
+                    successfullPairing = true;
+                    subPairList.Shuffle();
+                    if (savePlayer.faction != "NA")
+                    {
+                        subPairList.Insert(0, savePlayer);
+                    }
+                    if (x == 0)
+                    {
+                        //Add BUY player
+                        //Put winner on top
+                        foreach (Player findBuyPlyr in playersList)
+                        {
+                            if (findBuyPlyr.Uid == 50)
+                                subPairList.Add(findBuyPlyr);
+                                
+                        }
+                    }
+                    for (int y = 0; y <= subPairList.Count-1; y = y + 2)
+                    {
+                        if (subPairList.Count != y + 1)
+                        {
+                            foreach (int uid in subPairList[y].oppGuids)
+                            {
+                                if (uid == subPairList[y + 1].Uid)
+                                {
+                                    successfullPairing = false;
+                                }
+                            }
+                        }
+                    }
+                    iterations++;
+                    if (iterations == 50)
+                        successfullPairing = true;
+                }
+                
+                //Set count var to the number of players
+                int count = subPairList.Count;
+                //If we have an odd numebr of players in this sub list, it'll carry over to the next pairing process
+                //This happens during a pair down
+                if (IsOdd(count))
+                    count--;
+                //remove 1 from count since we use 0 based indexs
+                count--;
+                
+                for (int n = 0; n <= count; n++)
+                {
+                    pairListFinal.Add(subPairList[0]);
+                    subPairList.Remove(subPairList[0]);
+                }
+                
+                
+            }
+            for (int z = 0; z < pairListFinal.Count-1; z=z+2)
+            {
+                Pairing newPair = new Pairing();
+                newPair.Player1 = pairListFinal[z];
+                newPair.Player2 = pairListFinal[z+1];
+                
+                if (pairListFinal[z].Uid == 50 || pairListFinal[z+1].Uid == 50)
+                    newPair.Table = 0;
+                else
+                    newPair.Table = tableCount;
+
+                pairingList.Add(newPair);
+                tableCount++;
+            }
+        }
+        #endregion NewPairingLogic
+        public static bool IsOdd(int value)
+        {
+            return value % 2 != 0;
+        }
+        #region OldPairing Logic
+        //<summary> No Longer Used
+        //</summary> 
+        public void createPairingsOld()
         {
             if(roundNumber==0)
             {
@@ -126,6 +230,7 @@ namespace TournamentTracker
                     for (int x = roundNumber; x >= 0; x--)
                     {
                         int playerNum = -1;
+                        //Load Players into the sublist
                         foreach (Player plyr in playersList)
                         {
                             if (plyr.Wins == x)
@@ -146,6 +251,7 @@ namespace TournamentTracker
                                 }
 
                             }
+                            List<Player> listPlayersLeft = new List<Player>();
                             if (!playerPaired)
                             {
                                 //CHECK IF WE HAVE A PAIRDOWN
@@ -158,15 +264,23 @@ namespace TournamentTracker
                                     leftIndex++;
                                     foreach (Pairing pair in pairingList)
                                     {
-                                        if (pair.Player1 == subPairList[leftIndex] || pair.Player2 == subPairList[leftIndex])
+                                        if (pair.Player1 == subPairList[leftIndex])
+                                        {
+                                            listPlayersLeft.Add(pair.Player1);
+                                            playerLeftPairCountBool = true;
+                                        }
+                                        else if (pair.Player2 == subPairList[leftIndex])
                                         {
                                             playerLeftPairCountBool = true;
+                                            listPlayersLeft.Add(pair.Player1);
                                         }
 
                                     }
                                     if (!playerLeftPairCountBool && ply.Dropped == false)
                                         playersleft++;
                                 }
+                                //TODO: 
+                                //See if all players.oppguid =  all playersLeft.guid
                                 if (playersleft != 1)
                                 {
                                     //If player isnt paired
@@ -252,5 +366,33 @@ namespace TournamentTracker
             }
         }
 
+
+    }
+    #endregion OldPairing Logic
+    public static class ThreadSafeRandom
+    {
+        [ThreadStatic]
+        private static Random Local;
+
+        public static Random ThisThreadsRandom
+        {
+            get { return Local ?? (Local = new Random(unchecked(Environment.TickCount * 31 + Thread.CurrentThread.ManagedThreadId))); }
+        }
+    }
+
+    static class MyExtensions
+    {
+        public static void Shuffle<T>(this IList<T> list)
+        {
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = ThreadSafeRandom.ThisThreadsRandom.Next(n + 1);
+                T value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
+        }
     }
 }

@@ -24,7 +24,7 @@ using System.Text;
         {
             this.name = tournName;
             this.playerList.AddRange(players);
-            Round round = new Round(players, 0);
+            Round round = new Round(playerList, 0);
             round.createPairings();
             roundList.Add(round);
 

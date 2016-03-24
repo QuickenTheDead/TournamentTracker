@@ -53,19 +53,19 @@
             // 
             // PlayerOneLabel
             // 
-            this.PlayerOneLabel.AutoSize = true;
-            this.PlayerOneLabel.Location = new System.Drawing.Point(12, 9);
+            this.PlayerOneLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PlayerOneLabel.Location = new System.Drawing.Point(12, 4);
             this.PlayerOneLabel.Name = "PlayerOneLabel";
-            this.PlayerOneLabel.Size = new System.Drawing.Size(88, 13);
+            this.PlayerOneLabel.Size = new System.Drawing.Size(121, 18);
             this.PlayerOneLabel.TabIndex = 0;
             this.PlayerOneLabel.Text = "Player One Label";
             // 
             // playerTwoLabel
             // 
-            this.playerTwoLabel.AutoSize = true;
-            this.playerTwoLabel.Location = new System.Drawing.Point(190, 9);
+            this.playerTwoLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.playerTwoLabel.Location = new System.Drawing.Point(190, 4);
             this.playerTwoLabel.Name = "playerTwoLabel";
-            this.playerTwoLabel.Size = new System.Drawing.Size(78, 13);
+            this.playerTwoLabel.Size = new System.Drawing.Size(121, 18);
             this.playerTwoLabel.TabIndex = 1;
             this.playerTwoLabel.Text = "playerTwolabel";
             // 
@@ -208,6 +208,7 @@
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.acceptButton);
             this.Controls.Add(this.twoArmynumericUpDown);
+            this.Controls.Add(this.playerTwoLabel);
             this.Controls.Add(this.twoCPnumericUpDown);
             this.Controls.Add(this.oneCPnumericUpDown);
             this.Controls.Add(this.oneArmynumericUpDown);
@@ -216,10 +217,11 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.playerTwoLabel);
             this.Controls.Add(this.PlayerOneLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "ResultsRecorderForm";
-            this.Text = "ResultsRecorderForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Matchup Results";
             this.Load += new System.EventHandler(this.ResultsRecorderForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

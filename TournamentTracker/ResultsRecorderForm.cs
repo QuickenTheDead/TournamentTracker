@@ -11,8 +11,12 @@ namespace TournamentTracker
 {
     public partial class ResultsRecorderForm : Form
     {
-        public Pairing thisPair;
         public string actionType = "Cancel";
+        public int winningplayer;
+        public int oneCP;
+        public int twoCP;
+        public int oneAP;
+        public int twoAP;
         public ResultsRecorderForm()
         {
             InitializeComponent();
@@ -20,7 +24,7 @@ namespace TournamentTracker
         }
         public ResultsRecorderForm(Pairing pair)
         {
-            thisPair = pair;
+          
             InitializeComponent();
             PlayerOneLabel.Text = pair.Player1.displayName;
             playerTwoLabel.Text = pair.Player2.displayName;
@@ -43,17 +47,17 @@ namespace TournamentTracker
             actionType = "Accept";
             if (oneWinnerRadioButton.Checked)
             {
-                thisPair.WinningPlayer = 1;
+                winningplayer = 1;
             }
             else
             {
-                thisPair.WinningPlayer = 2;
+                winningplayer = 2;
             }
-            thisPair.OnePlayerCP = Decimal.ToInt32(oneCPnumericUpDown.Value);
-            thisPair.OnePlayerAP = Decimal.ToInt32(oneArmynumericUpDown.Value);
-            thisPair.TwoPlayerCP = Decimal.ToInt32(twoCPnumericUpDown.Value);
-            thisPair.TwoPlayerAP = Decimal.ToInt32(twoArmynumericUpDown.Value);
-            thisPair.Finished = true;
+            oneCP = Decimal.ToInt32(oneCPnumericUpDown.Value);
+            oneAP = Decimal.ToInt32(oneArmynumericUpDown.Value);
+            twoCP = Decimal.ToInt32(twoCPnumericUpDown.Value);
+            twoAP = Decimal.ToInt32(twoArmynumericUpDown.Value);
+           // thisPair.Finished = true;
             this.Close();
 
         }
