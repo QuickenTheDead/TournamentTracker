@@ -530,7 +530,11 @@ namespace TournamentTracker
         {
             try
             {
-                File.WriteAllText(Application.StartupPath + "\\" + tourny.Name + ".json", JsonConvert.SerializeObject(tourny));
+                string systemPath = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                string complete = Path.Combine(systemPath, "DohTwo", tourny.Name + ".json");
+                System.IO.FileInfo file = new System.IO.FileInfo(complete);
+                file.Directory.Create(); // If the directory already exists, this method does nothing.
+                File.WriteAllText(complete, JsonConvert.SerializeObject(tourny));
                 MessageBox.Show("Tournament Saved", "Save");
             }
             catch
@@ -543,7 +547,12 @@ namespace TournamentTracker
         {
             try
             {
-                File.WriteAllText(Application.StartupPath + "\\" + tourny.Name + ".json", JsonConvert.SerializeObject(tourny));
+
+                string systemPath = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                string complete = Path.Combine(systemPath, "DohTwo", tourny.Name + ".json");
+                System.IO.FileInfo file = new System.IO.FileInfo(complete);
+                file.Directory.Create(); // If the directory already exists, this method does nothing.
+                File.WriteAllText(complete, JsonConvert.SerializeObject(tourny));
             }
             catch
             {

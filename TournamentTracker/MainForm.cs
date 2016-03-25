@@ -204,11 +204,13 @@ namespace TournamentTracker
         {
             // Create an instance of the open file dialog box.
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            string systemPath = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string complete = Path.Combine(systemPath, "DohTwo");
 
             // Set filter options and filter index.
             openFileDialog1.Filter = "Json Files (.json)|*.json|All Files (*.*)|*.*";
             openFileDialog1.FilterIndex = 1;
-            openFileDialog1.InitialDirectory = Application.StartupPath;
+            openFileDialog1.InitialDirectory = complete;
             openFileDialog1.Multiselect = false;
 
             // Call the ShowDialog method to show the dialog box.
