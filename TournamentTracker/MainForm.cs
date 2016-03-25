@@ -6,9 +6,11 @@
  * 
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace TournamentTracker
@@ -196,6 +198,42 @@ namespace TournamentTracker
             else
                 tablesLabel.Text = "Tables :" + ((lstPlayer.Count) / 2);
             roundslabel.Text = "Max Rounds : " + calcRounds();
+        }
+
+        private void loadButton_Click(object sender, EventArgs e)
+        {
+            // Create an instance of the open file dialog box.
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            // Set filter options and filter index.
+            openFileDialog1.Filter = "Json Files (.json)|*.json|All Files (*.*)|*.*";
+            openFileDialog1.FilterIndex = 1;
+            openFileDialog1.InitialDirectory = Application.StartupPath;
+            openFileDialog1.Multiselect = false;
+
+            // Call the ShowDialog method to show the dialog box.
+            DialogResult userClickedOK = openFileDialog1.ShowDialog();
+
+            // Process input if the user clicked OK.
+            if (userClickedOK == DialogResult.OK)
+            {
+                //Get Input File Name
+
+                //using (StreamReader r = new StreamReader(Application.StartupPath + "\\Test1.json"))
+                using (StreamReader r = new StreamReader(openFileDialog1.FileName))
+                {
+                    string json = r.ReadToEnd();
+                    Tournament tourny = JsonConvert.DeserializeObject<Tournament>(json);
+
+                    pairform = new PairngsForm(tourny);
+                    pairform.Show();
+                }
+             }
+                
+
+                
+            
+            
         }
     }
 }

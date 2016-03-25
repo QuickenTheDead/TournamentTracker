@@ -264,6 +264,7 @@ namespace TournamentTracker
             this.loadButton.TabIndex = 16;
             this.loadButton.Text = "Load Tournament";
             this.loadButton.UseVisualStyleBackColor = true;
+            this.loadButton.Click += new System.EventHandler(this.loadButton_Click);
             // 
             // MainForm
             // 

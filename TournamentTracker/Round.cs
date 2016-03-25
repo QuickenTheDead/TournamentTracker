@@ -17,7 +17,7 @@ namespace TournamentTracker
     /// <summary>
 	/// Description of Player.
 	/// </summary>
-    class Round
+    public class Round
     {
         private List<Player> playersList = new List<Player>();
         private List<Pairing> pairingList = new List<Pairing>();
@@ -36,7 +36,7 @@ namespace TournamentTracker
             }
         }
 
-        internal List<Pairing> PairingList
+        public List<Pairing> PairingList
         {
             get
             {

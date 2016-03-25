@@ -12,7 +12,7 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
-//using Newtonsoft.Json;
+using Newtonsoft.Json;
 
 namespace TournamentTracker
 {
@@ -30,9 +30,9 @@ namespace TournamentTracker
         List<string> columns = new List<string>();
         int round= 0;
         Player swapPlayerSave;
-        Bitmap bitmap;
         int row = 0;
         int NUM_ROWS_PER_PAGE = 20;
+        int startSearch = 0;
         public PairngsForm()
 		{
 			//
@@ -44,6 +44,26 @@ namespace TournamentTracker
 			// TODO: Add constructor code after the InitializeComponent() call.
 			//
 		}
+        public PairngsForm(Tournament loadTourny)
+        {
+            //
+            // The InitializeComponent() call is required for Windows Forms designer support.
+            //
+            InitializeComponent();
+            tourny = loadTourny;
+            round = tourny.RoundList.Count-1;
+            this.Text = tourny.Name;
+            columns.Add("Table");
+            columns.Add("Player1");
+            columns.Add("Player2");
+            columns.Add("Complete");
+            //refreshDataGridView();
+            roundgroupBox.Text = "Round " + (round + 1);
+            
+            //
+            // TODO: Add constructor code after the InitializeComponent() call.
+            //
+        }
         public PairngsForm(List<Player> players, string name)
         {
             //
@@ -60,6 +80,7 @@ namespace TournamentTracker
             columns.Add("Complete");
             //refreshDataGridView();
             roundgroupBox.Text = "Round " + (round + 1);
+            saveTournament();
 
             //
             // TODO: Add constructor code after the InitializeComponent() call.
@@ -68,8 +89,24 @@ namespace TournamentTracker
         void PairngsFormLoad(object sender, EventArgs e)
 		{
             refreshDataGridView();
-            previousRoundButton.Enabled = false;
+            bool roundFinished = true;
             nextRoundbutton.Enabled = false;
+            if (round == 0)
+            {
+                previousRoundButton.Enabled = false;
+            }
+            foreach (Pairing pair in tourny.RoundList[round].PairingList)
+            {
+                if (pair.Finished == false)
+                {
+                    roundFinished = false;
+                }
+            }
+            if (roundFinished)
+            {
+                nextRoundbutton.Enabled = true;
+            }
+
         }
         void resultsForm_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -136,7 +173,7 @@ namespace TournamentTracker
                     {
                         nextRoundbutton.Enabled = true;
                     }
-                
+                saveTournament();
                 refreshDataGridView();
             }
 
@@ -186,6 +223,7 @@ namespace TournamentTracker
                     tourny.RoundList[round].PairingList.Clear();
                     tourny.RoundList[round].createPairings();
                 }
+                saveTournament();
                 refreshDataGridView();
             }
             else if (dropSwapForm.actionType == "Swap")
@@ -247,6 +285,7 @@ namespace TournamentTracker
                     tourny.RoundList[round].PairingList[pair1Index] = pair1;
                     tourny.RoundList[round].PairingList[pair2Index] = pair2;
                 }
+                saveTournament();
                 refreshDataGridView();
             }
         }
@@ -254,6 +293,7 @@ namespace TournamentTracker
         {
             if(tableform.actionType=="Accept")
                 tourny.RoundList[round].PairingList[index].Table = tableform.tableNum;
+            saveTournament();
             refreshDataGridView();
         }
         private void pairDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -382,6 +422,7 @@ namespace TournamentTracker
 
                 }
                 previousRoundButton.Enabled = true;
+                saveTournament();
                 refreshDataGridView();
                 roundgroupBox.Text = "Round " + (round + 1);
                 nextRoundbutton.Enabled = false;
@@ -487,8 +528,83 @@ namespace TournamentTracker
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-           // File.WriteAllText(@"c:\"+ tourny.Name + ".json", JsonConvert.SerializeObject(tourny));
-            
+            try
+            {
+                File.WriteAllText(Application.StartupPath + "\\" + tourny.Name + ".json", JsonConvert.SerializeObject(tourny));
+                MessageBox.Show("Tournament Saved", "Save");
+            }
+            catch
+            {
+                MessageBox.Show("Tournament Was Not Saved", "Error");
+
+            }
+        }
+        private void saveTournament()
+        {
+            try
+            {
+                File.WriteAllText(Application.StartupPath + "\\" + tourny.Name + ".json", JsonConvert.SerializeObject(tourny));
+            }
+            catch
+            {
+                MessageBox.Show("Tournament Was Not Saved", "Error");
+            }
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            if (searchTextBox.Text != "")
+            {
+                int foundGuid = 0;
+                int foundIndex = 0;
+                for (int x = startSearch; x < tourny.PlayerList.Count; x++)
+                {
+                    string upperSearch = tourny.PlayerList[x].displayName.ToUpper();
+                    if (upperSearch.Contains(searchTextBox.Text.ToUpper()))
+                    {
+                        foundGuid = tourny.PlayerList[x].Uid;
+                        foundIndex = x;
+                        startSearch = x + 1;
+                        break;
+                    }
+                }
+                if (foundGuid == 0)
+                {
+                    for (int x = 0; x < tourny.PlayerList.Count; x++)
+                    {
+                        string upperSearch = tourny.PlayerList[x].displayName.ToUpper();
+                        if (upperSearch.Contains(searchTextBox.Text.ToUpper()))
+                        {
+                            foundGuid = tourny.PlayerList[x].Uid;
+                            foundIndex = x;
+                            startSearch = x + 1;
+                            break;
+                        }
+                    }
+                }
+                if (foundGuid != 0)
+                {
+                    int rowIndex = 0;
+                    foreach (Pairing pair in tourny.RoundList[round].PairingList)
+                    {
+                        if (pair.Player1.Uid == foundGuid)
+                        {
+                            pairingDataGridView.CurrentCell = pairingDataGridView.Rows[rowIndex].Cells[1];
+                        }
+                        else if (pair.Player2.Uid == foundGuid)
+                        {
+                            pairingDataGridView.CurrentCell = pairingDataGridView.Rows[rowIndex].Cells[2];
+                        }
+                        rowIndex++;
+                    }
+                }
+            }
+            //searchTextBox.Clear();
+        }
+
+        private void searchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            startSearch = 0;
         }
     }
 }

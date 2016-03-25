@@ -46,7 +46,7 @@ namespace TournamentTracker
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.searchGroupBox = new System.Windows.Forms.GroupBox();
             this.searchButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.searchTextBox = new System.Windows.Forms.TextBox();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.pvDialog = new System.Windows.Forms.PrintPreviewDialog();
@@ -125,7 +125,7 @@ namespace TournamentTracker
             // searchGroupBox
             // 
             this.searchGroupBox.Controls.Add(this.searchButton);
-            this.searchGroupBox.Controls.Add(this.textBox1);
+            this.searchGroupBox.Controls.Add(this.searchTextBox);
             this.searchGroupBox.Location = new System.Drawing.Point(285, 248);
             this.searchGroupBox.Name = "searchGroupBox";
             this.searchGroupBox.Size = new System.Drawing.Size(222, 48);
@@ -141,13 +141,15 @@ namespace TournamentTracker
             this.searchButton.TabIndex = 1;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
-            // textBox1
+            // searchTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(7, 20);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(128, 20);
-            this.textBox1.TabIndex = 0;
+            this.searchTextBox.Location = new System.Drawing.Point(7, 20);
+            this.searchTextBox.Name = "searchTextBox";
+            this.searchTextBox.Size = new System.Drawing.Size(128, 20);
+            this.searchTextBox.TabIndex = 0;
+            this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
             // 
             // printDocument1
             // 
@@ -180,6 +182,7 @@ namespace TournamentTracker
             // 
             // PairngsForm
             // 
+            this.AcceptButton = this.searchButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(649, 304);
@@ -208,7 +211,7 @@ namespace TournamentTracker
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.GroupBox searchGroupBox;
         private System.Windows.Forms.Button searchButton;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox searchTextBox;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.PrintPreviewDialog pvDialog;

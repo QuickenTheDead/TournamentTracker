@@ -29,6 +29,9 @@ using System.Text;
             roundList.Add(round);
 
         }
+        public Tournament()
+        {
+        }
 
         public List<Player> PlayerList
         {
@@ -43,7 +46,7 @@ using System.Text;
             }
         }
 
-        internal List<Round> RoundList
+        public List<Round> RoundList
         {
             get
             {

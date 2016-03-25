@@ -22,3 +22,4 @@ C:\Users\cittah\Documents\SharpDevelop Projects\TournamentTrackerGit\TournamentT
 C:\Users\cittah\Documents\SharpDevelop Projects\TournamentTrackerGit\TournamentTracker\obj\Debug\TournamentTracker.dropSwapForm.resources
 C:\Users\cittah\Documents\SharpDevelop Projects\TournamentTrackerGit\TournamentTracker\obj\Debug\TournamentTracker.SwapForm.resources
 C:\Users\cittah\Documents\SharpDevelop Projects\TournamentTrackerGit\TournamentTracker\obj\Debug\TournamentTracker.TableForm.resources
+C:\Users\cittah\Documents\SharpDevelop Projects\TournamentTrackerGit\TournamentTracker\bin\Debug\Newtonsoft.Json.dll
