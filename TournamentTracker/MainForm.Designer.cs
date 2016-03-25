@@ -18,7 +18,6 @@ namespace TournamentTracker
 		private System.ComponentModel.IContainer components = null;
 		private System.Windows.Forms.Button addPlayerButton;
 		private System.Windows.Forms.ListBox playersListbox;
-		private System.Windows.Forms.Label testLabel;
 		private System.Windows.Forms.GroupBox addPlayerGroupBox;
 		private System.Windows.Forms.ComboBox factionComboBox;
 		private System.Windows.Forms.TextBox lastNameTextBox;
@@ -56,7 +55,6 @@ namespace TournamentTracker
 		{
             this.addPlayerButton = new System.Windows.Forms.Button();
             this.playersListbox = new System.Windows.Forms.ListBox();
-            this.testLabel = new System.Windows.Forms.Label();
             this.addPlayerGroupBox = new System.Windows.Forms.GroupBox();
             this.factionComboBox = new System.Windows.Forms.ComboBox();
             this.lastNameTextBox = new System.Windows.Forms.TextBox();
@@ -73,6 +71,7 @@ namespace TournamentTracker
             this.clearPlayersButton = new System.Windows.Forms.Button();
             this.tournNamelabel = new System.Windows.Forms.Label();
             this.tournNameTextBox = new System.Windows.Forms.TextBox();
+            this.loadButton = new System.Windows.Forms.Button();
             this.addPlayerGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,20 +88,11 @@ namespace TournamentTracker
             // playersListbox
             // 
             this.playersListbox.FormattingEnabled = true;
-            this.playersListbox.Location = new System.Drawing.Point(12, 38);
+            this.playersListbox.Location = new System.Drawing.Point(12, 37);
             this.playersListbox.Name = "playersListbox";
-            this.playersListbox.Size = new System.Drawing.Size(254, 277);
+            this.playersListbox.Size = new System.Drawing.Size(254, 238);
             this.playersListbox.TabIndex = 2;
             this.playersListbox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.playerListbox_MouseDoubleClick);
-            // 
-            // testLabel
-            // 
-            this.testLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.testLabel.Location = new System.Drawing.Point(297, 262);
-            this.testLabel.Name = "testLabel";
-            this.testLabel.Size = new System.Drawing.Size(155, 23);
-            this.testLabel.TabIndex = 16;
-            this.testLabel.Text = "Test Label";
             // 
             // addPlayerGroupBox
             // 
@@ -196,7 +186,7 @@ namespace TournamentTracker
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(288, 288);
+            this.startButton.Location = new System.Drawing.Point(419, 193);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(102, 23);
             this.startButton.TabIndex = 10;
@@ -225,7 +215,7 @@ namespace TournamentTracker
             // tablesLabel
             // 
             this.tablesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tablesLabel.Location = new System.Drawing.Point(297, 216);
+            this.tablesLabel.Location = new System.Drawing.Point(297, 222);
             this.tablesLabel.Name = "tablesLabel";
             this.tablesLabel.Size = new System.Drawing.Size(116, 23);
             this.tablesLabel.TabIndex = 14;
@@ -234,7 +224,7 @@ namespace TournamentTracker
             // roundslabel
             // 
             this.roundslabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.roundslabel.Location = new System.Drawing.Point(297, 239);
+            this.roundslabel.Location = new System.Drawing.Point(297, 252);
             this.roundslabel.Name = "roundslabel";
             this.roundslabel.Size = new System.Drawing.Size(116, 23);
             this.roundslabel.TabIndex = 15;
@@ -242,9 +232,9 @@ namespace TournamentTracker
             // 
             // clearPlayersButton
             // 
-            this.clearPlayersButton.Location = new System.Drawing.Point(396, 288);
+            this.clearPlayersButton.Location = new System.Drawing.Point(419, 222);
             this.clearPlayersButton.Name = "clearPlayersButton";
-            this.clearPlayersButton.Size = new System.Drawing.Size(98, 23);
+            this.clearPlayersButton.Size = new System.Drawing.Size(102, 23);
             this.clearPlayersButton.TabIndex = 11;
             this.clearPlayersButton.Text = "Clear Players";
             this.clearPlayersButton.UseVisualStyleBackColor = true;
@@ -266,13 +256,23 @@ namespace TournamentTracker
             this.tournNameTextBox.Size = new System.Drawing.Size(102, 20);
             this.tournNameTextBox.TabIndex = 4;
             // 
+            // loadButton
+            // 
+            this.loadButton.Location = new System.Drawing.Point(419, 252);
+            this.loadButton.Name = "loadButton";
+            this.loadButton.Size = new System.Drawing.Size(104, 23);
+            this.loadButton.TabIndex = 16;
+            this.loadButton.Text = "Load Tournament";
+            this.loadButton.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AcceptButton = this.addPlayerButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.clearButton;
-            this.ClientSize = new System.Drawing.Size(522, 325);
+            this.ClientSize = new System.Drawing.Size(535, 288);
+            this.Controls.Add(this.loadButton);
             this.Controls.Add(this.tournNameTextBox);
             this.Controls.Add(this.tournNamelabel);
             this.Controls.Add(this.clearPlayersButton);
@@ -282,7 +282,6 @@ namespace TournamentTracker
             this.Controls.Add(this.playerCountLabel);
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.addPlayerGroupBox);
-            this.Controls.Add(this.testLabel);
             this.Controls.Add(this.playersListbox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "MainForm";
@@ -302,5 +301,6 @@ namespace TournamentTracker
 
         private System.Windows.Forms.Label tournNamelabel;
         private System.Windows.Forms.TextBox tournNameTextBox;
+        private System.Windows.Forms.Button loadButton;
     }
 }

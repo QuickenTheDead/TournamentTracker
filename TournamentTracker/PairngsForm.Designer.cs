@@ -36,6 +36,7 @@ namespace TournamentTracker
 		/// </summary>
 		private void InitializeComponent()
 		{
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PairngsForm));
             this.pairingDataGridView = new System.Windows.Forms.DataGridView();
             this.previousRoundButton = new System.Windows.Forms.Button();
             this.nextRoundbutton = new System.Windows.Forms.Button();
@@ -46,6 +47,10 @@ namespace TournamentTracker
             this.searchGroupBox = new System.Windows.Forms.GroupBox();
             this.searchButton = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.pvDialog = new System.Windows.Forms.PrintPreviewDialog();
+            this.SaveButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pairingDataGridView)).BeginInit();
             this.roundgroupBox.SuspendLayout();
             this.searchGroupBox.SuspendLayout();
@@ -94,6 +99,7 @@ namespace TournamentTracker
             this.printButton.TabIndex = 4;
             this.printButton.Text = "Print Pairings";
             this.printButton.UseVisualStyleBackColor = true;
+            this.printButton.Click += new System.EventHandler(this.printButton_Click);
             // 
             // roundgroupBox
             // 
@@ -108,7 +114,7 @@ namespace TournamentTracker
             // 
             // completeButton
             // 
-            this.completeButton.Location = new System.Drawing.Point(513, 267);
+            this.completeButton.Location = new System.Drawing.Point(513, 248);
             this.completeButton.Name = "completeButton";
             this.completeButton.Size = new System.Drawing.Size(124, 23);
             this.completeButton.TabIndex = 6;
@@ -143,11 +149,41 @@ namespace TournamentTracker
             this.textBox1.Size = new System.Drawing.Size(128, 20);
             this.textBox1.TabIndex = 0;
             // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.UseEXDialog = true;
+            // 
+            // pvDialog
+            // 
+            this.pvDialog.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.pvDialog.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.pvDialog.ClientSize = new System.Drawing.Size(400, 300);
+            this.pvDialog.Document = this.printDocument1;
+            this.pvDialog.Enabled = true;
+            this.pvDialog.Icon = ((System.Drawing.Icon)(resources.GetObject("pvDialog.Icon")));
+            this.pvDialog.Name = "pvDialog";
+            this.pvDialog.Visible = false;
+            // 
+            // SaveButton
+            // 
+            this.SaveButton.Location = new System.Drawing.Point(513, 277);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(124, 23);
+            this.SaveButton.TabIndex = 8;
+            this.SaveButton.Text = "Save Tournament";
+            this.SaveButton.UseVisualStyleBackColor = true;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            // 
             // PairngsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(649, 304);
+            this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.searchGroupBox);
             this.Controls.Add(this.completeButton);
             this.Controls.Add(this.roundgroupBox);
@@ -173,5 +209,9 @@ namespace TournamentTracker
         private System.Windows.Forms.GroupBox searchGroupBox;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.PrintDialog printDialog1;
+        private System.Windows.Forms.PrintPreviewDialog pvDialog;
+        private System.Windows.Forms.Button SaveButton;
     }
 }

@@ -11,6 +11,8 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
+//using Newtonsoft.Json;
 
 namespace TournamentTracker
 {
@@ -28,6 +30,9 @@ namespace TournamentTracker
         List<string> columns = new List<string>();
         int round= 0;
         Player swapPlayerSave;
+        Bitmap bitmap;
+        int row = 0;
+        int NUM_ROWS_PER_PAGE = 20;
         public PairngsForm()
 		{
 			//
@@ -327,7 +332,7 @@ namespace TournamentTracker
         }
         private void refreshDataGridView()
         {
-            //<toDo> Initial load does not show colours
+            
             pairingDataGridView.DataSource = null;
             pairingDataGridView.DataSource = GetResultsTable();
             pairingDataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -413,6 +418,77 @@ namespace TournamentTracker
         public static bool IsOdd(int value)
         {
             return value % 2 != 0;
+        }
+
+        private void printButton_Click(object sender, EventArgs e)
+        {
+            row = 0;
+            pvDialog.ShowDialog();
+        }
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            int rowPosition = 25;
+
+            // draw headers
+            DrawHeader(e.Graphics, ref rowPosition);
+
+            rowPosition += 40;
+
+            // draw each row
+            DrawGridBody(e.Graphics, rowPosition);
+
+            // see if there are more pages to print
+            if (((DataTable)pairingDataGridView.DataSource).Rows.Count > row)
+                e.HasMorePages = true;
+            else
+                row = 0;
+        }
+        private void DrawHeader(Graphics g, ref int y_value)
+        {
+            int x_value = 175;
+            Font bold = new Font(this.Font, FontStyle.Bold);
+
+            foreach (DataGridViewColumn dc in pairingDataGridView.Columns)
+            {
+                if (dc.DisplayIndex != 3)
+                {
+                    g.DrawString(dc.HeaderText, bold, Brushes.Black, (float)x_value, (float)y_value);
+                    x_value += dc.Width + 5;
+                }
+            }
+        }
+        private void DrawGridBody(Graphics g, int y_value)
+        {
+            int x_value;
+
+            for (int i = 0; (i < NUM_ROWS_PER_PAGE) && ((i + row) < ((DataTable)pairingDataGridView.DataSource).Rows.Count); ++i)
+            {
+                DataRow dr = ((DataTable)pairingDataGridView.DataSource).Rows[i + row];
+                x_value = 175;
+
+                // draw a solid line
+                g.DrawLine(Pens.Black, new Point(x_value, y_value), new Point(this.Width, y_value));
+
+                foreach (DataGridViewColumn dc in pairingDataGridView.Columns)
+                {
+                    if (dc.DisplayIndex != 3)
+                    {
+                        string text = dr[dc.DataPropertyName].ToString();
+                        g.DrawString(text, this.Font, Brushes.Black, (float)x_value, (float)y_value + 10f);
+                        x_value += dc.Width + 5;
+                    }
+                }
+
+                y_value += 40;
+            }
+
+            row += NUM_ROWS_PER_PAGE;
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+           // File.WriteAllText(@"c:\"+ tourny.Name + ".json", JsonConvert.SerializeObject(tourny));
+            
         }
     }
 }

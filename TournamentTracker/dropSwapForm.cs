@@ -29,8 +29,12 @@ namespace TournamentTracker
 
         private void dropButton_Click(object sender, EventArgs e)
         {
-            actionType = "Drop";
-            Close();
+            DialogResult result = MessageBox.Show("Are you sure you want to drop " + player.displayName + "?", "Confirmation", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                actionType = "Drop";
+                Close();
+            }
         }
 
         private void swapButton_Click(object sender, EventArgs e)

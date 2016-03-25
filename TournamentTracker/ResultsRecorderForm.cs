@@ -44,6 +44,23 @@ namespace TournamentTracker
 
         private void acceptButton_Click(object sender, EventArgs e)
         {
+            if(Decimal.ToInt32(oneCPnumericUpDown.Value) == 0 && Decimal.ToInt32(oneArmynumericUpDown.Value) ==0 && Decimal.ToInt32(twoCPnumericUpDown.Value) ==0&& Decimal.ToInt32(twoArmynumericUpDown.Value) == 0)
+            {
+                DialogResult result = MessageBox.Show("Control Points and Army Points Are Currently 0. Is this correct?", "Confirmation", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    successfulResult();
+                }
+            }
+            else
+            {
+                successfulResult();
+            }
+            
+
+        }
+        private void successfulResult()
+        {
             actionType = "Accept";
             if (oneWinnerRadioButton.Checked)
             {
@@ -57,11 +74,9 @@ namespace TournamentTracker
             oneAP = Decimal.ToInt32(oneArmynumericUpDown.Value);
             twoCP = Decimal.ToInt32(twoCPnumericUpDown.Value);
             twoAP = Decimal.ToInt32(twoArmynumericUpDown.Value);
-           // thisPair.Finished = true;
+            // thisPair.Finished = true;
             this.Close();
-
         }
-
         private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Close();

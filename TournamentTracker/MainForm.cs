@@ -66,7 +66,7 @@ namespace TournamentTracker
 				Player newPlayer = new Player(firstNameTextBox.Text,lastNameTextBox.Text,factionComboBox.Text);
                 newPlayer.Uid = playerUID;
                 playerUID++;
-				testLabel.Text = newPlayer.firstName + " " + newPlayer.lastName + " " + newPlayer.Uid;
+				//testLabel.Text = newPlayer.firstName + " " + newPlayer.lastName + " " + newPlayer.Uid;
 				lstPlayer.Add(newPlayer);
 				
 				playersListbox.DataSource= null;
@@ -98,7 +98,7 @@ namespace TournamentTracker
 			else if(playerInfoForm.Action=="Update")
 			{
 				lstPlayer[index] = playerInfoForm.player;
-				testLabel.Text = lstPlayer[index].firstName + " " + lstPlayer[index].lastName + " " + lstPlayer[index].faction;
+				//testLabel.Text = lstPlayer[index].firstName + " " + lstPlayer[index].lastName + " " + lstPlayer[index].faction;
 			
 				playersListbox.DataSource= null;
 				playersListbox.DataSource= lstPlayer;

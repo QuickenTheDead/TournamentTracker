@@ -30,8 +30,8 @@
         {
             this.titleLabel = new System.Windows.Forms.Label();
             this.PlayerComboBox = new System.Windows.Forms.ComboBox();
-            this.AcceptButton = new System.Windows.Forms.Button();
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.acceptButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
             this.nameLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -52,25 +52,26 @@
             this.PlayerComboBox.Size = new System.Drawing.Size(155, 21);
             this.PlayerComboBox.TabIndex = 1;
             // 
-            // AcceptButton
+            // acceptButton
             // 
-            this.AcceptButton.Location = new System.Drawing.Point(12, 90);
-            this.AcceptButton.Name = "AcceptButton";
-            this.AcceptButton.Size = new System.Drawing.Size(75, 23);
-            this.AcceptButton.TabIndex = 2;
-            this.AcceptButton.Text = "Accept";
-            this.AcceptButton.UseVisualStyleBackColor = true;
-            this.AcceptButton.Click += new System.EventHandler(this.AcceptButton_Click);
+            this.acceptButton.Location = new System.Drawing.Point(12, 90);
+            this.acceptButton.Name = "acceptButton";
+            this.acceptButton.Size = new System.Drawing.Size(75, 23);
+            this.acceptButton.TabIndex = 2;
+            this.acceptButton.Text = "Accept";
+            this.acceptButton.UseVisualStyleBackColor = true;
+            this.acceptButton.Click += new System.EventHandler(this.AcceptButton_Click);
             // 
-            // CancelButton
+            // cancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(93, 90);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelButton.TabIndex = 3;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancelButton.Location = new System.Drawing.Point(93, 90);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelButton.TabIndex = 3;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // nameLabel
             // 
@@ -83,12 +84,14 @@
             // 
             // SwapForm
             // 
+            this.AcceptButton = this.acceptButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(179, 120);
             this.Controls.Add(this.nameLabel);
-            this.Controls.Add(this.CancelButton);
-            this.Controls.Add(this.AcceptButton);
+            this.Controls.Add(this.cancelButton);
+            this.Controls.Add(this.acceptButton);
             this.Controls.Add(this.PlayerComboBox);
             this.Controls.Add(this.titleLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -105,8 +108,8 @@
 
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.ComboBox PlayerComboBox;
-        private System.Windows.Forms.Button AcceptButton;
-        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button acceptButton;
+        private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Label nameLabel;
     }
 }
