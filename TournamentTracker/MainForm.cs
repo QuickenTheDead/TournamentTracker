@@ -33,11 +33,12 @@ namespace TournamentTracker
 			InitializeComponent();
 			playersListbox.DataSource= lstPlayer;
 			playersListbox.DisplayMember="displayName";
+            CreateMyMainMenu();
 
-			//
-			// TODO: Add constructor code after the InitializeComponent() call.
-			//
-		}
+            //
+            // TODO: Add constructor code after the InitializeComponent() call.
+            //
+        }
 		void playerListbox_MouseDoubleClick(object sender, MouseEventArgs e)
     	{
           index = this.playersListbox.IndexFromPoint(e.Location);
@@ -237,5 +238,51 @@ namespace TournamentTracker
             
             
         }
+
+        private void viewWikiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/QuickenTheDead/TournamentTracker/wiki");
+        }
+        public void CreateMyMainMenu()
+        {
+            // Create an empty MainMenu.
+            MainMenu mainMenu1 = new MainMenu();
+
+            MenuItem menuItem1 = new MenuItem();
+            MenuItem menuItem2 = new MenuItem();
+            MenuItem menuItem3 = new MenuItem();
+            MenuItem menuItem4 = new MenuItem();
+
+            MenuItem menuItem5 = new MenuItem();
+            MenuItem menuItem6 = new MenuItem();
+
+            menuItem1.Text = "File";
+            menuItem3.Text = "New Tournment";
+            menuItem4.Text = "Load Tournment...";
+            menuItem2.Text = "Help";
+            menuItem5.Text = "Open Wiki";
+            menuItem6.Text = "About";
+
+            menuItem3.Click += new System.EventHandler(this.ClearPlayersButtonClick);
+            menuItem4.Click += new System.EventHandler(this.loadButton_Click);
+
+            menuItem5.Click += new System.EventHandler(this.viewWikiToolStripMenuItem_Click);
+            menuItem6.Click += new System.EventHandler(this.viewWikiToolStripMenuItem_Click);
+            // Add two MenuItem objects to the MainMenu.
+            mainMenu1.MenuItems.Add(menuItem1);
+            mainMenu1.MenuItems.Add(menuItem2);
+            mainMenu1.MenuItems[0].MenuItems.Add(menuItem3);
+            mainMenu1.MenuItems[0].MenuItems.Add(menuItem4);
+
+            mainMenu1.MenuItems[1].MenuItems.Add(menuItem5);
+            mainMenu1.MenuItems[1].MenuItems.Add(menuItem6);
+
+            // Add functionality to the menu items using the Click event. 
+           
+
+            // Bind the MainMenu to Form1.
+            Menu = mainMenu1;
+        }
+
     }
 }

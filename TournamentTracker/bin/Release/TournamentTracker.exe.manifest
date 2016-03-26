@@ -3,7 +3,7 @@
   <asmv1:assemblyIdentity name="TournamentTracker.exe" version="0.1.0.4" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="TournamentTracker" version="1.0.5928.24239" language="neutral" processorArchitecture="x86" />
+    <assemblyIdentity name="TournamentTracker" version="1.0.5929.19312" language="neutral" processorArchitecture="x86" />
     <commandLine file="TournamentTracker.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -54,14 +54,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TournamentTracker.exe" size="77824">
-      <assemblyIdentity name="TournamentTracker" version="1.0.5928.24239" language="neutral" processorArchitecture="x86" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TournamentTracker.exe" size="78336">
+      <assemblyIdentity name="TournamentTracker" version="1.0.5929.19312" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ZVCd+XAqQzZkZyxR7VkIhOHPAxYFeSIRAFWaMACx56c=</dsig:DigestValue>
+        <dsig:DigestValue>WSeewenISafJK67oCKFzVpbeJaI27Piwy8H8eIx2ltE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
