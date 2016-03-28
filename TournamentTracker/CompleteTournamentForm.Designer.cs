@@ -44,7 +44,7 @@
             this.richTextBox1.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox1.Location = new System.Drawing.Point(12, 12);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(522, 293);
+            this.richTextBox1.Size = new System.Drawing.Size(544, 293);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "#  ,First Name     ,Last Name      ,Faction                ,W,SOS,CPs,APD";
             // 
@@ -110,7 +110,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(546, 342);
+            this.ClientSize = new System.Drawing.Size(568, 342);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.standingButton);
             this.Controls.Add(this.exportButton);

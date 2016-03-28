@@ -231,17 +231,17 @@ namespace TournamentTracker
                     pairform = new PairngsForm(tourny);
                     pairform.Show();
                 }
-             }
-                
-
-                
-            
-            
+             }   
         }
 
         private void viewWikiToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/QuickenTheDead/TournamentTracker/wiki");
+        }
+        private void AboutMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutForm abootform = new AboutForm();
+            abootform.Show();
         }
         public void CreateMyMainMenu()
         {
@@ -267,7 +267,7 @@ namespace TournamentTracker
             menuItem4.Click += new System.EventHandler(this.loadButton_Click);
 
             menuItem5.Click += new System.EventHandler(this.viewWikiToolStripMenuItem_Click);
-            menuItem6.Click += new System.EventHandler(this.viewWikiToolStripMenuItem_Click);
+            menuItem6.Click += new System.EventHandler(this.AboutMenuItem_Click);
             // Add two MenuItem objects to the MainMenu.
             mainMenu1.MenuItems.Add(menuItem1);
             mainMenu1.MenuItems.Add(menuItem2);

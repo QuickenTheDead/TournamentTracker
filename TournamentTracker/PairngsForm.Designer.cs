@@ -192,6 +192,8 @@ namespace TournamentTracker
             this.Controls.Add(this.roundgroupBox);
             this.Controls.Add(this.printButton);
             this.Controls.Add(this.pairingDataGridView);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "PairngsForm";
             this.Text = "PairngsForm";
             this.Load += new System.EventHandler(this.PairngsFormLoad);
