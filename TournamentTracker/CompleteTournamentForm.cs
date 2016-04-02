@@ -26,6 +26,7 @@ namespace TournamentTracker
             calcSos();
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = GetResultsTable();
+            dataGridView1.Visible = true;
             dataGridView1.Columns[4].Width = 50;
             //dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns[5].Width = 50;
@@ -88,6 +89,7 @@ namespace TournamentTracker
         private void standingButton_Click(object sender, EventArgs e)
         {
             standings();
+            dataGridView1.Visible = true;
         }
 
         private void exportButton_Click(object sender, EventArgs e)
@@ -98,6 +100,7 @@ namespace TournamentTracker
 
                 richTextBox1.Text = richTextBox1.Text + ",\n" + Plyr.firstName + " " + Plyr.lastName;
             }
+            dataGridView1.Visible = false;
         }
         public DataTable GetResultsTable()
         {
@@ -221,6 +224,12 @@ namespace TournamentTracker
             }
 
             row += NUM_ROWS_PER_PAGE;
+        }
+
+        private void csvButton_Click(object sender, EventArgs e)
+        {
+            standings();
+            dataGridView1.Visible = false;
         }
     }
 }

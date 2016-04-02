@@ -44,6 +44,8 @@
             this.twoArmynumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.acceptButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.factionOnelabel = new System.Windows.Forms.Label();
+            this.factionTwolabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.oneArmynumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.oneCPnumericUpDown)).BeginInit();
@@ -56,16 +58,16 @@
             this.PlayerOneLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PlayerOneLabel.Location = new System.Drawing.Point(12, 4);
             this.PlayerOneLabel.Name = "PlayerOneLabel";
-            this.PlayerOneLabel.Size = new System.Drawing.Size(121, 18);
+            this.PlayerOneLabel.Size = new System.Drawing.Size(147, 18);
             this.PlayerOneLabel.TabIndex = 0;
             this.PlayerOneLabel.Text = "Player One Label";
             // 
             // playerTwoLabel
             // 
             this.playerTwoLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.playerTwoLabel.Location = new System.Drawing.Point(190, 4);
+            this.playerTwoLabel.Location = new System.Drawing.Point(176, 4);
             this.playerTwoLabel.Name = "playerTwoLabel";
-            this.playerTwoLabel.Size = new System.Drawing.Size(121, 18);
+            this.playerTwoLabel.Size = new System.Drawing.Size(147, 18);
             this.playerTwoLabel.TabIndex = 1;
             this.playerTwoLabel.Text = "playerTwolabel";
             // 
@@ -94,7 +96,7 @@
             this.panel1.Controls.Add(this.winnerLabel);
             this.panel1.Controls.Add(this.oneWinnerRadioButton);
             this.panel1.Controls.Add(this.twoWinnerRadioButton);
-            this.panel1.Location = new System.Drawing.Point(1, 25);
+            this.panel1.Location = new System.Drawing.Point(12, 42);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(310, 25);
             this.panel1.TabIndex = 2;
@@ -111,7 +113,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 60);
+            this.label1.Location = new System.Drawing.Point(24, 77);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(26, 13);
             this.label1.TabIndex = 5;
@@ -120,7 +122,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 87);
+            this.label2.Location = new System.Drawing.Point(23, 104);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 26);
             this.label2.TabIndex = 6;
@@ -129,7 +131,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(190, 60);
+            this.label3.Location = new System.Drawing.Point(201, 77);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(26, 13);
             this.label3.TabIndex = 7;
@@ -138,7 +140,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(190, 87);
+            this.label4.Location = new System.Drawing.Point(201, 104);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(62, 26);
             this.label4.TabIndex = 8;
@@ -146,7 +148,7 @@
             // 
             // oneArmynumericUpDown
             // 
-            this.oneArmynumericUpDown.Location = new System.Drawing.Point(84, 92);
+            this.oneArmynumericUpDown.Location = new System.Drawing.Point(95, 109);
             this.oneArmynumericUpDown.Name = "oneArmynumericUpDown";
             this.oneArmynumericUpDown.Size = new System.Drawing.Size(56, 20);
             this.oneArmynumericUpDown.TabIndex = 4;
@@ -154,7 +156,7 @@
             // 
             // oneCPnumericUpDown
             // 
-            this.oneCPnumericUpDown.Location = new System.Drawing.Point(84, 60);
+            this.oneCPnumericUpDown.Location = new System.Drawing.Point(95, 77);
             this.oneCPnumericUpDown.Name = "oneCPnumericUpDown";
             this.oneCPnumericUpDown.Size = new System.Drawing.Size(56, 20);
             this.oneCPnumericUpDown.TabIndex = 3;
@@ -162,7 +164,7 @@
             // 
             // twoCPnumericUpDown
             // 
-            this.twoCPnumericUpDown.Location = new System.Drawing.Point(253, 58);
+            this.twoCPnumericUpDown.Location = new System.Drawing.Point(264, 75);
             this.twoCPnumericUpDown.Name = "twoCPnumericUpDown";
             this.twoCPnumericUpDown.Size = new System.Drawing.Size(58, 20);
             this.twoCPnumericUpDown.TabIndex = 5;
@@ -170,7 +172,7 @@
             // 
             // twoArmynumericUpDown
             // 
-            this.twoArmynumericUpDown.Location = new System.Drawing.Point(253, 92);
+            this.twoArmynumericUpDown.Location = new System.Drawing.Point(264, 109);
             this.twoArmynumericUpDown.Name = "twoArmynumericUpDown";
             this.twoArmynumericUpDown.Size = new System.Drawing.Size(58, 20);
             this.twoArmynumericUpDown.TabIndex = 6;
@@ -179,7 +181,7 @@
             // acceptButton
             // 
             this.acceptButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.acceptButton.Location = new System.Drawing.Point(84, 125);
+            this.acceptButton.Location = new System.Drawing.Point(95, 142);
             this.acceptButton.Name = "acceptButton";
             this.acceptButton.Size = new System.Drawing.Size(75, 23);
             this.acceptButton.TabIndex = 7;
@@ -190,7 +192,7 @@
             // cancelButton
             // 
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(165, 125);
+            this.cancelButton.Location = new System.Drawing.Point(176, 142);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 8;
@@ -198,13 +200,33 @@
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
+            // factionOnelabel
+            // 
+            this.factionOnelabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.factionOnelabel.Location = new System.Drawing.Point(13, 22);
+            this.factionOnelabel.Name = "factionOnelabel";
+            this.factionOnelabel.Size = new System.Drawing.Size(146, 17);
+            this.factionOnelabel.TabIndex = 9;
+            this.factionOnelabel.Text = "label5";
+            // 
+            // factionTwolabel
+            // 
+            this.factionTwolabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.factionTwolabel.Location = new System.Drawing.Point(176, 22);
+            this.factionTwolabel.Name = "factionTwolabel";
+            this.factionTwolabel.Size = new System.Drawing.Size(147, 17);
+            this.factionTwolabel.TabIndex = 10;
+            this.factionTwolabel.Text = "label6";
+            // 
             // ResultsRecorderForm
             // 
             this.AcceptButton = this.acceptButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(335, 153);
+            this.ClientSize = new System.Drawing.Size(335, 172);
+            this.Controls.Add(this.factionTwolabel);
+            this.Controls.Add(this.factionOnelabel);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.acceptButton);
             this.Controls.Add(this.twoArmynumericUpDown);
@@ -252,5 +274,7 @@
         private System.Windows.Forms.Button acceptButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Label winnerLabel;
+        private System.Windows.Forms.Label factionOnelabel;
+        private System.Windows.Forms.Label factionTwolabel;
     }
 }

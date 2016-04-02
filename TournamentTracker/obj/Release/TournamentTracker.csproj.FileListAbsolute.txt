@@ -18,3 +18,4 @@ C:\Users\cittah\Documents\SharpDevelop Projects\TournamentTrackerGit\TournamentT
 C:\Users\cittah\Documents\SharpDevelop Projects\TournamentTrackerGit\TournamentTracker\obj\Release\TournamentTracker.exe.manifest
 C:\Users\cittah\Documents\SharpDevelop Projects\TournamentTrackerGit\TournamentTracker\obj\Release\TournamentTracker.application
 C:\Users\cittah\Documents\SharpDevelop Projects\TournamentTrackerGit\TournamentTracker\obj\Release\TournamentTracker.AboutForm.resources
+C:\Users\cittah\Documents\SharpDevelop Projects\TournamentTrackerGit\TournamentTracker\obj\Release\TournamentTracker.AddPlayerForm.resources

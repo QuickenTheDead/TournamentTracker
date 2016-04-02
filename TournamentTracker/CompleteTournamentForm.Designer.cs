@@ -36,6 +36,7 @@
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.csvButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,13 +45,13 @@
             this.richTextBox1.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox1.Location = new System.Drawing.Point(12, 12);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(544, 293);
+            this.richTextBox1.Size = new System.Drawing.Size(548, 293);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "#  ,First Name     ,Last Name      ,Faction                ,W,SOS,CPs,APD";
             // 
             // printButton
             // 
-            this.printButton.Location = new System.Drawing.Point(85, 311);
+            this.printButton.Location = new System.Drawing.Point(89, 311);
             this.printButton.Name = "printButton";
             this.printButton.Size = new System.Drawing.Size(94, 23);
             this.printButton.TabIndex = 1;
@@ -60,7 +61,7 @@
             // 
             // exportButton
             // 
-            this.exportButton.Location = new System.Drawing.Point(313, 311);
+            this.exportButton.Location = new System.Drawing.Point(389, 311);
             this.exportButton.Name = "exportButton";
             this.exportButton.Size = new System.Drawing.Size(94, 23);
             this.exportButton.TabIndex = 2;
@@ -70,7 +71,7 @@
             // 
             // standingButton
             // 
-            this.standingButton.Location = new System.Drawing.Point(199, 311);
+            this.standingButton.Location = new System.Drawing.Point(189, 311);
             this.standingButton.Name = "standingButton";
             this.standingButton.Size = new System.Drawing.Size(94, 23);
             this.standingButton.TabIndex = 3;
@@ -99,18 +100,30 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(457, 324);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(77, 10);
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.Size = new System.Drawing.Size(548, 293);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.Visible = false;
+            // 
+            // csvButton
+            // 
+            this.csvButton.Location = new System.Drawing.Point(289, 311);
+            this.csvButton.Name = "csvButton";
+            this.csvButton.Size = new System.Drawing.Size(94, 23);
+            this.csvButton.TabIndex = 5;
+            this.csvButton.Text = "CSV Standings";
+            this.csvButton.UseVisualStyleBackColor = true;
+            this.csvButton.Click += new System.EventHandler(this.csvButton_Click);
             // 
             // CompleteTournamentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(568, 342);
+            this.ClientSize = new System.Drawing.Size(572, 342);
+            this.Controls.Add(this.csvButton);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.standingButton);
             this.Controls.Add(this.exportButton);
@@ -135,5 +148,6 @@
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Drawing.Printing.PrintDocument printDocument;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button csvButton;
     }
 }

@@ -26,8 +26,10 @@ namespace TournamentTracker
         {
           
             InitializeComponent();
-            PlayerOneLabel.Text = pair.Player1.displayName;
-            playerTwoLabel.Text = pair.Player2.displayName;
+            PlayerOneLabel.Text = pair.Player1.firstName + " " + pair.Player1.lastName;
+            playerTwoLabel.Text = pair.Player2.firstName + " " + pair.Player2.lastName;
+            factionOnelabel.Text = pair.Player1.faction;
+            factionTwolabel.Text = pair.Player2.faction;
             oneCPnumericUpDown.Value = pair.OnePlayerCP;
             oneArmynumericUpDown.Value = pair.OnePlayerAP;
             twoCPnumericUpDown.Value = pair.TwoPlayerCP;
@@ -44,7 +46,7 @@ namespace TournamentTracker
 
         private void acceptButton_Click(object sender, EventArgs e)
         {
-            if(Decimal.ToInt32(oneCPnumericUpDown.Value) == 0 && Decimal.ToInt32(oneArmynumericUpDown.Value) ==0 && Decimal.ToInt32(twoCPnumericUpDown.Value) ==0&& Decimal.ToInt32(twoArmynumericUpDown.Value) == 0)
+            if(Decimal.ToInt32(oneCPnumericUpDown.Value) == 0 && Decimal.ToInt32(oneArmynumericUpDown.Value) == 0 && Decimal.ToInt32(twoCPnumericUpDown.Value) == 0 && Decimal.ToInt32(twoArmynumericUpDown.Value) == 0)
             {
                 DialogResult result = MessageBox.Show("Control Points and Army Points Are Currently 0. Is this correct?", "Confirmation", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)

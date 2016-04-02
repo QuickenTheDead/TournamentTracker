@@ -24,7 +24,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>DohTwo</ProductName>
     <PublisherName>QuickenTheDead</PublisherName>
-    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationRevision>6</ApplicationRevision>
     <ApplicationVersion>0.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -102,6 +102,12 @@
     <Compile Include="AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddPlayerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddPlayerForm.Designer.cs">
+      <DependentUpon>AddPlayerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CompleteTournamentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +181,9 @@
   <ItemGroup>
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddPlayerForm.resx">
+      <DependentUpon>AddPlayerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CompleteTournamentForm.resx">
       <DependentUpon>CompleteTournamentForm.cs</DependentUpon>

@@ -50,7 +50,6 @@ namespace TournamentTracker
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.pvDialog = new System.Windows.Forms.PrintPreviewDialog();
-            this.SaveButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pairingDataGridView)).BeginInit();
             this.roundgroupBox.SuspendLayout();
             this.searchGroupBox.SuspendLayout();
@@ -67,8 +66,10 @@ namespace TournamentTracker
             this.pairingDataGridView.MultiSelect = false;
             this.pairingDataGridView.Name = "pairingDataGridView";
             this.pairingDataGridView.ReadOnly = true;
+            this.pairingDataGridView.RowHeadersVisible = false;
             this.pairingDataGridView.Size = new System.Drawing.Size(649, 238);
             this.pairingDataGridView.TabIndex = 1;
+            this.pairingDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.pairingDataGridView_CellContentClick);
             this.pairingDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.pairDataGridView_CellDoubleClick);
             // 
             // previousRoundButton
@@ -114,9 +115,9 @@ namespace TournamentTracker
             // 
             // completeButton
             // 
-            this.completeButton.Location = new System.Drawing.Point(513, 248);
+            this.completeButton.Location = new System.Drawing.Point(513, 254);
             this.completeButton.Name = "completeButton";
-            this.completeButton.Size = new System.Drawing.Size(124, 23);
+            this.completeButton.Size = new System.Drawing.Size(124, 42);
             this.completeButton.TabIndex = 6;
             this.completeButton.Text = "Standings";
             this.completeButton.UseVisualStyleBackColor = true;
@@ -170,23 +171,12 @@ namespace TournamentTracker
             this.pvDialog.Name = "pvDialog";
             this.pvDialog.Visible = false;
             // 
-            // SaveButton
-            // 
-            this.SaveButton.Location = new System.Drawing.Point(513, 277);
-            this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(124, 23);
-            this.SaveButton.TabIndex = 8;
-            this.SaveButton.Text = "Save Tournament";
-            this.SaveButton.UseVisualStyleBackColor = true;
-            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
-            // 
             // PairngsForm
             // 
             this.AcceptButton = this.searchButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(649, 304);
-            this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.searchGroupBox);
             this.Controls.Add(this.completeButton);
             this.Controls.Add(this.roundgroupBox);
@@ -217,6 +207,5 @@ namespace TournamentTracker
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.PrintPreviewDialog pvDialog;
-        private System.Windows.Forms.Button SaveButton;
     }
 }
